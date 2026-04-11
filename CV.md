@@ -8,9 +8,7 @@
 
 ## SUMMARY
 
-I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core. I take pride in being
-a responsible and detail-oriented developer who values clean code and maintainable architecture. I’m always eager to learn, adapt
-quickly to new technologies, and thrive in collaborative environments that focus on delivering quality software.
+4+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.
 
 ## TECHNIQUE SKILLS
 

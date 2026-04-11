@@ -6,7 +6,7 @@ const adminPassword = "ErtbdF:j_U2HWy."; // Mật khẩu Admin có dấu (.)
 const bio = {
     name: "Ninh Ngoc Hieu",
     title: ".NET Developer",
-    summary: "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core. I take pride in being a responsible and detail-oriented developer who values clean code and maintainable architecture. I’m always eager to learn, adapt quickly to new technologies, and thrive in collaborative environments that focus on delivering quality software.",
+    summary: "4+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.",
     email: "ninhngochieu@gmail.com",
     github: "github.com/ninhngochieu",
     linkedin: "linkedin.com/in/hieu-ninh-1339b0212/",

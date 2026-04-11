@@ -118,7 +118,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     private record PocketBaseListResponse<T>(IEnumerable<T> Items, int TotalItems);
 
     // --- Mock Fallbacks ---
-    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core. I take pride in being a responsible and detail-oriented developer who values clean code and maintainable architecture. I’m always eager to learn, adapt quickly to new technologies, and thrive in collaborative environments that focus on delivering quality software.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "HCM City, Vietnam");
+    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "4+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "HCM City, Vietnam");
     private IEnumerable<ProjectDto> GetMockProjects() => [
         new ("1", "Biwase CRM", "CRM system built on legacy structure for the Biwase water company.", "https://www.ninhngochieu.site", "/projects/crm.png", ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]),
         new ("2", "Webstercare Medication Prescription", "Medical prescription system for Webstercare Australia.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])
