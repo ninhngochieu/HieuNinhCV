@@ -1,0 +1,235 @@
+[
+  {
+    "name": "hieuninhcv_bio",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "text3208210256",
+        "name": "id",
+        "type": "text",
+        "system": true,
+        "required": true,
+        "primaryKey": true,
+        "autogeneratePattern": "[a-z0-9]{15}"
+      },
+      {
+        "id": "bio_f1",
+        "name": "name",
+        "type": "text",
+        "system": false
+      },
+      {
+        "id": "bio_f2",
+        "name": "title",
+        "type": "text",
+        "system": false
+      },
+      {
+        "id": "bio_f3",
+        "name": "summary",
+        "type": "editor",
+        "system": false
+      },
+      {
+        "id": "bio_f4",
+        "name": "email",
+        "type": "email",
+        "system": false
+      },
+      {
+        "id": "bio_f5",
+        "name": "github",
+        "type": "text",
+        "system": false
+      },
+      {
+        "id": "bio_f6",
+        "name": "linkedin",
+        "type": "text",
+        "system": false
+      },
+      {
+        "id": "bio_f7",
+        "name": "location",
+        "type": "text",
+        "system": false
+      },
+      {
+        "id": "autodate2990389176",
+        "name": "created",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": false
+      },
+      {
+        "id": "autodate3332085495",
+        "name": "updated",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": true
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": ""
+  },
+  {
+    "name": "hieuninhcv_projects",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "text3208210256",
+        "name": "id",
+        "type": "text",
+        "system": true,
+        "required": true,
+        "primaryKey": true,
+        "autogeneratePattern": "[a-z0-9]{15}"
+      },
+      { "id": "proj_f1", "name": "title", "type": "text", "system": false },
+      { "id": "proj_f2", "name": "description", "type": "text", "system": false },
+      { "id": "proj_f3", "name": "image", "type": "file", "system": false },
+      { "id": "proj_f4", "name": "tags", "type": "json", "system": false },
+      { "id": "proj_f5", "name": "github", "type": "text", "system": false },
+      { "id": "proj_f6", "name": "demo", "type": "text", "system": false },
+      {
+        "id": "autodate2990389176",
+        "name": "created",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": false
+      },
+      {
+        "id": "autodate3332085495",
+        "name": "updated",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": true
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": ""
+  },
+  {
+    "name": "hieuninhcv_skills",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "text3208210256",
+        "name": "id",
+        "type": "text",
+        "system": true,
+        "required": true,
+        "primaryKey": true,
+        "autogeneratePattern": "[a-z0-9]{15}"
+      },
+      { "id": "skill_f1", "name": "name", "type": "text", "system": false },
+      { "id": "skill_f2", "name": "items", "type": "json", "system": false },
+      {
+        "id": "autodate2990389176",
+        "name": "created",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": false
+      },
+      {
+        "id": "autodate3332085495",
+        "name": "updated",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": true
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": ""
+  },
+  {
+    "name": "hieuninhcv_experience",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "text3208210256",
+        "name": "id",
+        "type": "text",
+        "system": true,
+        "required": true,
+        "primaryKey": true,
+        "autogeneratePattern": "[a-z0-9]{15}"
+      },
+      { "id": "exp_f1", "name": "company", "type": "text", "system": false },
+      { "id": "exp_f2", "name": "role", "type": "text", "system": false },
+      { "id": "exp_f3", "name": "period", "type": "text", "system": false },
+      { "id": "exp_f4", "name": "description", "type": "text", "system": false },
+      {
+        "id": "autodate2990389176",
+        "name": "created",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": false
+      },
+      {
+        "id": "autodate3332085495",
+        "name": "updated",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": true
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": ""
+  },
+  {
+    "name": "hieuninhcv_education",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "text3208210256",
+        "name": "id",
+        "type": "text",
+        "system": true,
+        "required": true,
+        "primaryKey": true,
+        "autogeneratePattern": "[a-z0-9]{15}"
+      },
+      { "id": "edu_f1", "name": "school", "type": "text", "system": false },
+      { "id": "edu_f2", "name": "degree", "type": "text", "system": false },
+      { "id": "edu_f3", "name": "period", "type": "text", "system": false },
+      { "id": "edu_f4", "name": "description", "type": "text", "system": false },
+      {
+        "id": "autodate2990389176",
+        "name": "created",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": false
+      },
+      {
+        "id": "autodate3332085495",
+        "name": "updated",
+        "type": "autodate",
+        "system": false,
+        "onCreate": true,
+        "onUpdate": true
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": ""
+  }
+]

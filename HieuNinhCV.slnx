@@ -4,6 +4,5 @@
     <Deploy />
   </Project>
   <Project Path="HieuNinhCV.AppHost/HieuNinhCV.AppHost.csproj" />
-  <Project Path="HieuNinhCV.Seeder/HieuNinhCV.Seeder.csproj" />
   <Project Path="HieuNinhCV.Server/HieuNinhCV.Server.csproj" />
 </Solution>
