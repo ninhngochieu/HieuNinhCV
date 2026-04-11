@@ -17,7 +17,7 @@ const experience = [
     {
         company: "FPT Telecom",
         role: ".Net Developer",
-        period: "08/2023 - Present",
+        period: "08/2025 - Present",
         highlights: [
             "Sales and retail software systems built on microservices architecture.",
             "Handled high load with peak traffic of over 7,000 requests per second (RPS).",
@@ -27,7 +27,7 @@ const experience = [
     {
         company: "Vietnam Blockchain Corporation",
         role: ".Net Developer",
-        period: "06/2023 - 07/2023",
+        period: "06/2025 - 07/2025",
         highlights: [
             "CRM system for managing water supply business logic for millions of records.",
             "Refactored system architecture to improve performance by 30%."
@@ -36,7 +36,7 @@ const experience = [
     {
         company: "TMA Solutions",
         role: ".Net Developer",
-        period: "08/2021 - 06/2023",
+        period: "08/2021 - 06/2025",
         highlights: [
             "Medical prescription system managing tens of millions of healthcare records.",
             "Designed and optimized reporting modules for high-volume queries.",

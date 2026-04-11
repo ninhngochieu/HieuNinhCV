@@ -34,7 +34,7 @@ Other •Strong grasp of OOP and SOLID principles with experience applying commo
 
 ## EXPERIENCE
 
-FPT Telecom 08/2023 - Present
+FPT Telecom 08/2025 - Present
 
 .Net Developer
 
@@ -42,7 +42,7 @@ FPT Telecom 08/2023 - Present
 - Optimized backend services for extreme scale, successfully handling traffic peaks of over 7,000 RPS.
 - Consistently met aggressive delivery schedules while ensuring system stability and scalability.
 
-Vietnam Blockchain Corporation 06/2023 - 07/2023
+Vietnam Blockchain Corporation 06/2025 - 07/2025
 
 .Net Developer
 
@@ -52,7 +52,7 @@ Vietnam Blockchain Corporation 06/2023 - 07/2023
 - Refactored system architecture to improve performance by ~30%, and delivered a functional release within 6 months despite initial
     architectural limitations.
 
-TMA Solutions Aug 2021 - June 2023
+TMA Solutions Aug 2021 - June 2025
 
 .Net Developer
 
