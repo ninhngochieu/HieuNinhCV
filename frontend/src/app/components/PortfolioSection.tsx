@@ -24,7 +24,7 @@ interface Bio {
 
 interface Skill {
   name: string;
-  category: string;
+  items: string[];
 }
 
 interface Experience {
@@ -76,7 +76,7 @@ export default function PortfolioSection() {
 
   if (loading) return <div style={{ textAlign: 'center', padding: '100px', opacity: 0.5 }}>Architecting Experience...</div>;
 
-  const skillCategories = Array.from(new Set(skills.map(s => s.category)));
+// Skills are already organized by category (name) from the backend
 
   return (
     <div className="portfolio-content">
@@ -102,14 +102,6 @@ export default function PortfolioSection() {
           {bio?.summary}
         </p>
         
-        <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-          <a href={`mailto:${bio?.email}`} className="primary-btn">
-            Connect
-          </a>
-          <a href={`https://${bio?.github}`} target="_blank" rel="noopener" className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '12px' }}>
-            GitHub
-          </a>
-        </div>
       </section>
 
       {/* Experience Section */}
@@ -147,22 +139,23 @@ export default function PortfolioSection() {
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-          {skillCategories.map(cat => (
-            <div key={cat} className="glass-card" style={{ padding: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          {skills.map(skill => (
+            <div key={skill.name} className="glass-card" style={{ padding: '1.5rem' }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                {cat}
+                {skill.name}
               </h4>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {skills.filter(s => s.category === cat).map(skill => (
-                  <span key={skill.name} style={{ 
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+                {skill.items?.map(item => (
+                  <span key={item} style={{ 
                     padding: '0.4rem 0.8rem', 
                     borderRadius: '8px', 
                     background: 'rgba(255,255,255,0.05)', 
                     border: '1px solid var(--glass-border)',
-                    fontSize: '0.9rem'
+                    fontSize: '0.85rem',
+                    color: 'rgba(255,255,255,0.8)'
                   }}>
-                    {skill.name}
+                    {item}
                   </span>
                 ))}
               </div>

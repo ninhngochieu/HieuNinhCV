@@ -2,7 +2,7 @@ namespace HieuNinhCV.Server;
 
 public record ProjectDto(string Id, string Title, string Description, string Url, string ImageUrl, string[] TechStack);
 public record BioDto(string Id, string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
-public record SkillDto(string Name, string Category);
+public record SkillDto(string Name, string[] Items);
 public record ExperienceDto(string Company, string Role, string Period, string[] Highlights);
 public record EducationDto(string Institution, string Degree, string Major, string Period);
 
@@ -124,9 +124,10 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         new ("2", "Webstercare Medication Prescription", "Medical prescription system for Webstercare Australia.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])
     ];
     private IEnumerable<SkillDto> GetMockSkills() => [
-        new ("C#, T-SQL, TypeScript, HTML, CSS, Javascript", "Languages"),
-        new (".NET Framework, Entity Framework, Dapper, ReactJS, Angular", "Frameworks & Platforms"),
-        new ("Microsoft SQL Server, MongoDB, Redis", "Databases")
+        new ("Languages", ["C#", "T-SQL", "TypeScript", "HTML", "CSS", "Javascript"]),
+        new ("Frameworks & Platforms", [".NET Framework", "Entity Framework", "Dapper", "ReactJS", "Angular"]),
+        new ("Databases", ["Microsoft SQL Server", "MongoDB", "Redis"]),
+        new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];
     private IEnumerable<ExperienceDto> GetMockExperience() => [
         new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2023 - Present", ["CRM system for managing water supply orders...", "Refactored system architecture, improved performance by 30%."]),
