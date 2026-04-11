@@ -38,7 +38,8 @@ const experience = [
 
 const skills = [
     { name: "Languages", items: ["C#", "T-SQL", "TypeScript", "HTML", "CSS", "Javascript"] },
-    { name: "Frameworks & Platforms", items: [".NET Framework", "Entity Framework", "Dapper", "ReactJS", "Angular"] },
+    { name: "Frameworks & Platforms", items: [".NET Framework", "Entity Framework", "Dapper"] },
+    { name: "Frontend", items: ["Angular", "TanStack"] },
     { name: "Databases", items: ["Microsoft SQL Server", "MongoDB", "Redis"] },
     { name: "Other", items: ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"] }
 ];

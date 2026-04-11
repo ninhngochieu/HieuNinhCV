@@ -16,7 +16,7 @@ Programming Language •C#, T-SQL, TypeScript, HTML, CSS, Javascript
 
 Framework / Platform •.NET Framework, Entity Framework, Dapper
 
-- ReactJS, Angular
+Frontend •Angular, TanStack
 
 Database Management System •Microsoft SQL Server
 

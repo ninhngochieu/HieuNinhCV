@@ -125,7 +125,8 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     ];
     private IEnumerable<SkillDto> GetMockSkills() => [
         new ("Languages", ["C#", "T-SQL", "TypeScript", "HTML", "CSS", "Javascript"]),
-        new ("Frameworks & Platforms", [".NET Framework", "Entity Framework", "Dapper", "ReactJS", "Angular"]),
+        new ("Frameworks & Platforms", [".NET Framework", "Entity Framework", "Dapper"]),
+        new ("Frontend", ["Angular", "TanStack"]),
         new ("Databases", ["Microsoft SQL Server", "MongoDB", "Redis"]),
         new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];
