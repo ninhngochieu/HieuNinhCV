@@ -124,9 +124,9 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         new ("2", "Webstercare Medication Prescription", "Medical prescription system for Webstercare Australia.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])
     ];
     private IEnumerable<SkillDto> GetMockSkills() => [
-        new ("Languages", ["C#", "T-SQL", "TypeScript", "HTML", "CSS", "Javascript"]),
+        new ("Languages", ["C#", "T-SQL", "TypeScript", "Javascript"]),
         new ("Frameworks & Platforms", [".NET Framework", "Entity Framework", "Dapper"]),
-        new ("Frontend", ["Angular", "TanStack"]),
+        new ("Frontend", ["React", "Angular", "TanStack", "HTML", "CSS"]),
         new ("Databases", ["Microsoft SQL Server", "MongoDB", "Redis"]),
         new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];

@@ -12,11 +12,11 @@
 
 ## TECHNIQUE SKILLS
 
-Programming Language •C#, T-SQL, TypeScript, HTML, CSS, Javascript
+Programming Language •C#, T-SQL, TypeScript, Javascript
 
 Framework / Platform •.NET Framework, Entity Framework, Dapper
 
-Frontend •Angular, TanStack
+Frontend •React, Angular, TanStack, HTML, CSS
 
 Database Management System •Microsoft SQL Server
 
