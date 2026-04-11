@@ -118,9 +118,19 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     private record PocketBaseListResponse<T>(IEnumerable<T> Items, int TotalItems);
 
     // --- Mock Fallbacks ---
-    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieuninh", "HCM City");
-    private IEnumerable<ProjectDto> GetMockProjects() => [new ("1", "Biwase CRM", "CRM system for water supply.", "https://ninhngochieu.site", "/projects/crm.png", [".NET", "React"])];
-    private IEnumerable<SkillDto> GetMockSkills() => [new ("C#", "Languages"), new (".NET", "Frameworks")];
-    private IEnumerable<ExperienceDto> GetMockExperience() => [new ("Vietnam Blockchain", ".NET Developer", "2023-Present", ["Refactored architecture"])];
-    private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Bachelor", "Software Engineering", "2017-2021")];
+    private BioDto GetMockBio() => new ("1", "Ninh Ngọc Hiếu", ".NET Developer", "Tôi là một lập trình viên .NET với 4 năm kinh nghiệm xây dựng các API và dịch vụ backend mạnh mẽ bằng ASP.NET Core. Tôi tự hào là một nhà phát triển có trách nhiệm, định hướng chi tiết, coi trọng mã sạch và kiến trúc dễ bảo trì.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "568 Lạc Long Quân, Phường 5, Quận 11, TP. HCM, Việt Nam");
+    private IEnumerable<ProjectDto> GetMockProjects() => [
+        new ("1", "Biwase CRM", "Hệ thống CRM xây dựng trên cấu trúc legacy cho khách hàng Biwase.", "https://www.ninhngochieu.site", "/projects/crm.png", ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]),
+        new ("2", "Webstercare Medication Prescription", "Hệ thống kê đơn thuốc cho khách hàng Webstercare tại Úc.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])
+    ];
+    private IEnumerable<SkillDto> GetMockSkills() => [
+        new ("C#, T-SQL, TypeScript, HTML, CSS, Javascript", "Languages"),
+        new (".NET Framework, Entity Framework, Dapper, ReactJS, Angular", "Frameworks & Platforms"),
+        new ("Microsoft SQL Server, MongoDB, Redis", "Databases")
+    ];
+    private IEnumerable<ExperienceDto> GetMockExperience() => [
+        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2023 - Hiện tại", ["Hệ thống CRM quản lý đơn hàng cấp nước...", "Tái cấu trúc kiến trúc hệ thống, cải thiện hiệu suất thêm 30%."]),
+        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2023", ["Hệ thống kê đơn thuốc cho ngành y tế...", "Thiết kế và tối ưu hóa các module báo cáo."])
+    ];
+    private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Cử nhân", "Kỹ thuật phần mềm", "10/2017 - 12/2021")];
 }

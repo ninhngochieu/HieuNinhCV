@@ -5,51 +5,67 @@ const adminPassword = "ErtbdF:j_U2HWy."; // Mật khẩu Admin có dấu (.)
 
 const bio = {
     name: "Ninh Ngọc Hiếu",
-    title: "Fullstack Developer",
-    summary: "Là một lập trình viên có niềm đam mê phần mềm và luôn không ngừng học hỏi và cập nhật công nghệ mới. Với kỹ năng giải quyết vấn đề tốt, khả năng làm việc nhóm hiệu quả và tính cách hòa đồng.",
+    title: ".NET Developer",
+    summary: "Tôi là một lập trình viên .NET với 4 năm kinh nghiệm xây dựng các API và dịch vụ backend mạnh mẽ bằng ASP.NET Core. Tôi tự hào là một nhà phát triển có trách nhiệm, định hướng chi tiết, coi trọng mã sạch và kiến trúc dễ bảo trì.",
     email: "ninhngochieu@gmail.com",
     github: "github.com/ninhngochieu",
-    linkedin: "linkedin.com/in/ninhngochieu",
-    location: "Hà Nội, Việt Nam"
+    linkedin: "linkedin.com/in/hieu-ninh-1339b0212/",
+    location: "568 Lạc Long Quân, Phường 5, Quận 11, TP. HCM, Việt Nam"
 };
 
 const experience = [
     {
-        company: "Công ty Cổ phần Công nghệ SAVIS",
-        role: "Frontend Developer",
-        period: "Tháng 10/2023 - Hiện tại",
-        description: "Phát triển giao diện người dùng cho các hệ thống quản lý doanh nghiệp, sử dụng React và Next.js."
+        company: "Vietnam Blockchain Corporation",
+        role: ".Net Developer",
+        period: "06/2023 - Hiện tại",
+        highlights: [
+            "Hệ thống CRM quản lý đơn hàng cấp nước cho hộ gia đình và doanh nghiệp với hàng triệu bản ghi.",
+            "Phát triển chính và bảo trì các tính năng cốt lõi và cải tiến hệ thống liên tục.",
+            "Tái cấu trúc kiến trúc hệ thống, cải thiện hiệu suất thêm 30%."
+        ]
     },
     {
-        company: "Công ty TNHH Giải pháp Công nghệ Thông tin FSI",
-        role: "Junior Developer",
-        period: "Tháng 06/2022 - Tháng 09/2023",
-        description: "Tham gia phát triển các dự án về số hóa tài liệu và quản lý dữ liệu sử dụng .NET và Angular."
+        company: "TMA Solutions",
+        role: ".Net Developer",
+        period: "08/2021 - 06/2023",
+        highlights: [
+            "Hệ thống kê đơn thuốc cho ngành y tế với hàng chục triệu hồ sơ bệnh án.",
+            "Thiết kế và tối ưu hóa các module báo cáo, phát triển các tính năng nhỏ.",
+            "Đảm bảo tiến độ công việc và đóng góp vào sự ổn định chung của hệ thống."
+        ]
     }
 ];
 
 const skills = [
-    { name: "Languages", items: ["C#", "JavaScript", "TypeScript", "SQL"] },
-    { name: "Frontend", items: ["Next.js", "React", "Tailwind CSS", "Redux"] },
-    { name: "Backend", items: [".NET Core", "Aspire", "Entity Framework", "Web API"] }
+    { name: "Languages", items: ["C#", "T-SQL", "TypeScript", "HTML", "CSS", "Javascript"] },
+    { name: "Frameworks & Platforms", items: [".NET Framework", "Entity Framework", "Dapper", "ReactJS", "Angular"] },
+    { name: "Databases", items: ["Microsoft SQL Server", "MongoDB", "Redis"] },
+    { name: "Other", items: ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"] }
 ];
 
 const projects = [
     {
-        title: "HieuNinhCV - Portfolio",
-        description: "Hệ thống portfolio cá nhân tích hợp PocketBase và .NET Aspire.",
-        url: "https://github.com/ninhngochieu/HieuNinhCV",
-        imageUrl: "",
-        techStack: ["Next.js 15", ".NET 9", "PocketBase"]
+        title: "Biwase CRM",
+        description: "Hệ thống CRM xây dựng trên cấu trúc legacy cho khách hàng Biwase.",
+        url: "https://www.ninhngochieu.site",
+        imageUrl: "/projects/crm.png",
+        techStack: ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]
+    },
+    {
+        title: "Webstercare Medication Prescription",
+        description: "Hệ thống kê đơn thuốc cho khách hàng Webstercare tại Úc.",
+        url: "https://www.ninhngochieu.site",
+        imageUrl: "/projects/medication.png",
+        techStack: ["Angular", ".NET 6", "Azure Service Bus"]
     }
 ];
 
 const education = [
     {
-        institution: "Đại học Công nghệ - ĐHQGHN",
-        degree: "Kỹ sư",
-        major: "Công nghệ thông tin",
-        period: "2018 - 2022"
+        institution: "Saigon University",
+        degree: "Cử nhân",
+        major: "Kỹ thuật phần mềm",
+        period: "10/2017 - 12/2021"
     }
 ];
 
