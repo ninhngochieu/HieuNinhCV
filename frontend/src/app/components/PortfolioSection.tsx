@@ -182,29 +182,13 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Footer / CTA */}
+      {/* Footer */}
       <footer style={{ 
-        padding: '5rem 2rem', 
+        padding: '3rem 2rem', 
         textAlign: 'center', 
-        borderTop: '1px solid var(--glass-border)',
-        background: 'rgba(255,255,255,0.02)'
+        borderTop: '1px solid var(--glass-border)'
       }}>
-        <h3 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-          Let's Build Something Great
-        </h3>
-        <p style={{ color: 'var(--secondary)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
-          Currently seeking new challenges in high-throughput systems and distributed architecture.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href={`mailto:${bio?.email}`} className="primary-btn" style={{ padding: '0.8rem 2rem' }}>
-            Get in Touch
-          </a>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <a href={`https://${bio?.linkedin}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)', hover: { color: 'var(--primary)' } as any }}>LinkedIn</a>
-            <a href={`https://${bio?.github}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>GitHub</a>
-          </div>
-        </div>
-        <div style={{ marginTop: '5rem', opacity: 0.3, fontSize: '0.8rem' }}>
+        <div style={{ opacity: 0.3, fontSize: '0.8rem' }}>
           © {new Date().getFullYear()} {bio?.name}. All rights reserved.
         </div>
       </footer>
