@@ -8,6 +8,7 @@
 | 2026-04-11 | Synchronize Data with CV.md (English) | ✅ Translated all content to English, ran upsert seeder |
 | 2026-04-11 | Remove Hero Action Buttons | ✅ Removed Connect and GitHub buttons from top section |
 | 2026-04-11 | Shorten Bio Summary | ✅ Condensed professional summary across CV, backend and DB |
+| 2026-04-11 | Fix Seeder Duplication | ✅ Fixed upsert logic to handle URL encoding for special characters |
 
 ## Active Projects
 - **HieuNinhCV**: Professional Portfolio

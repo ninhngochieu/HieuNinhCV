@@ -92,13 +92,18 @@ const seed = async () => {
         const collectionName = `${prefix}${col}`;
         try {
             // 1. Search for existing
-            let filter = "";
+            let searchUrl = `${pbUrl}/api/collections/${collectionName}/records?limit=1`;
             if (matchFields.length > 0) {
-                filter = matchFields.map(f => `${f}="${data[f]}"`).join(" && ");
+                const filter = matchFields.map(f => `${f}="${data[f]}"`).join(" && ");
+                searchUrl += `&filter=(${encodeURIComponent(filter)})`;
             }
 
-            const searchRes = await fetch(`${pbUrl}/api/collections/${collectionName}/records?limit=1${filter ? `&filter=(${filter})` : ''}`, { headers });
+            const searchRes = await fetch(searchUrl, { headers });
             const searchData = await searchRes.json();
+            if (!searchRes.ok) {
+                console.log(`! Search error ${col}: ${searchData.message || searchRes.statusText}`);
+                return;
+            }
             const existing = searchData.items?.[0];
 
             if (existing) {
