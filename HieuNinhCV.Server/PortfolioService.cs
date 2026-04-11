@@ -68,7 +68,16 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         try
         {
             var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>($"{_pbUrl}/api/collections/hieuninhcv_experience/records");
-            return response?.Items ?? GetMockExperience();
+            var items = response?.Items ?? GetMockExperience();
+            // Sort by period descending: "Present" first, then by year and month
+            return items.OrderByDescending(e => {
+                if (e.Period.Contains("Present")) return "9999/99";
+                var parts = e.Period.Split('-').Select(p => p.Trim()).ToList();
+                var lastPart = parts.Last();
+                var dateParts = lastPart.Split('/');
+                if (dateParts.Length == 2) return $"{dateParts[1]}/{dateParts[0]}";
+                return lastPart;
+            });
         }
         catch
         {
