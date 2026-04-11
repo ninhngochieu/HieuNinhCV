@@ -167,14 +167,16 @@ export default function PortfolioSection() {
           <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Education</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {education.map((edu, idx) => (
-            <div key={idx} className="glass-card" style={{ padding: '2rem', textAlign: 'center' }}>
-              <div style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.5rem', fontSize: '0.8rem' }}>
-                {edu.degree} in {edu.major}
+            <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+                <div>
+                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{edu.institution}</h4>
+                  <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{edu.degree} in {edu.major}</div>
+                </div>
+                <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{edu.period}</div>
               </div>
-              <h4 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>{edu.institution}</h4>
-              <div style={{ color: 'var(--secondary)', fontSize: '0.9rem' }}>{edu.period}</div>
             </div>
           ))}
         </div>
