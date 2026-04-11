@@ -182,16 +182,6 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ 
-        padding: '3rem 2rem', 
-        textAlign: 'center', 
-        borderTop: '1px solid var(--glass-border)'
-      }}>
-        <div style={{ opacity: 0.3, fontSize: '0.8rem' }}>
-          © {new Date().getFullYear()} {bio?.name}. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 }
