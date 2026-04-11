@@ -42,7 +42,6 @@ interface Education {
 }
 
 export default function PortfolioSection() {
-  const [projects, setProjects] = useState<Project[]>([]);
   const [bio, setBio] = useState<Bio | null>(null);
   const [skills, setSkills] = useState<Skill[]>([]);
   const [experience, setExperience] = useState<Experience[]>([]);
@@ -52,16 +51,14 @@ export default function PortfolioSection() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [bioRes, projRes, skillRes, expRes, eduRes] = await Promise.all([
+        const [bioRes, skillRes, expRes, eduRes] = await Promise.all([
           fetch('/api/portfolio/bio'),
-          fetch('/api/portfolio/projects'),
           fetch('/api/portfolio/skills'),
           fetch('/api/portfolio/experience'),
           fetch('/api/portfolio/education')
         ]);
         
         setBio(await bioRes.json());
-        setProjects(await projRes.json());
         setSkills(await skillRes.json());
         setExperience(await expRes.json());
         setEducation(await eduRes.json());
@@ -164,27 +161,6 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Featured Work Grid */}
-      <section style={{ marginBottom: '8rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Featured Projects</h3>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
-        </div>
-
-        <div className="grid-hover">
-          {projects.map(project => (
-            <div key={project.id} className="project-card" style={{ padding: '2rem' }}>
-              <div style={{ color: 'var(--primary)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                {project.techStack?.join(' • ')}
-              </div>
-              <h4 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>{project.title}</h4>
-              <p style={{ color: 'var(--secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.5' }}>
-                {project.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Education Section */}
       <section style={{ marginBottom: '8rem' }}>
