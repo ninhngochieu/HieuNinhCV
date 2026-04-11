@@ -181,16 +181,6 @@ export default function PortfolioSection() {
               <p style={{ color: 'var(--secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.5' }}>
                 {project.description}
               </p>
-              <a href={project.url} target="_blank" rel="noopener" style={{ 
-                color: '#fff', 
-                fontWeight: 600, 
-                display: 'inline-flex', 
-                alignItems: 'center', 
-                gap: '0.5rem',
-                borderBottom: '2px solid var(--primary)'
-              }}>
-                View Showcase ➔
-              </a>
             </div>
           ))}
         </div>
