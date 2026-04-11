@@ -18,26 +18,52 @@ interface Bio {
   email: string;
   github: string;
   linkedin: string;
+  location: string;
+}
+
+interface Skill {
+  name: string;
+  category: string;
+}
+
+interface Experience {
+  company: string;
+  role: string;
+  period: string;
+  highlights: string[];
+}
+
+interface Education {
+  institution: string;
+  degree: string;
+  major: string;
+  period: string;
 }
 
 export default function PortfolioSection() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [bio, setBio] = useState<Bio | null>(null);
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [experience, setExperience] = useState<Experience[]>([]);
+  const [education, setEducation] = useState<Education | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [bioRes, projRes] = await Promise.all([
+        const [bioRes, projRes, skillRes, expRes, eduRes] = await Promise.all([
           fetch('/api/portfolio/bio'),
-          fetch('/api/portfolio/projects')
+          fetch('/api/portfolio/projects'),
+          fetch('/api/portfolio/skills'),
+          fetch('/api/portfolio/experience'),
+          fetch('/api/portfolio/education')
         ]);
         
-        const bioData = await bioRes.json();
-        const projData = await projRes.json();
-        
-        setBio(bioData);
-        setProjects(projData);
+        setBio(await bioRes.json());
+        setProjects(await projRes.json());
+        setSkills(await skillRes.json());
+        setExperience(await expRes.json());
+        setEducation(await eduRes.json());
       } catch (err) {
         console.error('Error loading portfolio:', err);
       } finally {
@@ -49,10 +75,12 @@ export default function PortfolioSection() {
 
   if (loading) return <div style={{ textAlign: 'center', padding: '100px', opacity: 0.5 }}>Architecting Experience...</div>;
 
+  const skillCategories = Array.from(new Set(skills.map(s => s.category)));
+
   return (
     <div className="portfolio-content">
       {/* Hero Section */}
-      <section style={{ marginBottom: '6rem', textAlign: 'center' }}>
+      <section style={{ marginBottom: '8rem', textAlign: 'center' }}>
         <h1 style={{ 
           fontSize: '4.5rem', 
           fontWeight: 800, 
@@ -63,16 +91,19 @@ export default function PortfolioSection() {
         }}>
           {bio?.name}
         </h1>
-        <h2 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '2rem', fontWeight: 600 }}>
+        <h2 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 600 }}>
           {bio?.title}
         </h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.1rem' }}>
+        <div style={{ color: 'var(--secondary)', marginBottom: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', fontSize: '0.9rem' }}>
+           <span>{bio?.location}</span>
+        </div>
+        <p style={{ maxWidth: '700px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
           {bio?.summary}
         </p>
         
         <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
           <a href={`mailto:${bio?.email}`} className="primary-btn">
-            Connect Now
+            Connect
           </a>
           <a href={`https://${bio?.github}`} target="_blank" rel="noopener" className="glass-card" style={{ padding: '0.75rem 1.5rem', borderRadius: '12px' }}>
             GitHub
@@ -80,11 +111,69 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section style={{ marginBottom: '6rem' }}>
+      {/* Experience Section */}
+      <section style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Experience</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          {experience.map((exp, idx) => (
+            <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div>
+                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{exp.role}</h4>
+                  <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{exp.company}</div>
+                </div>
+                <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{exp.period}</div>
+              </div>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1.2rem', color: 'var(--secondary)' }}>
+                {exp.highlights.map((item, hi) => (
+                  <li key={hi}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech Stack Grid */}
+      <section style={{ marginBottom: '8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Featured Work</h3>
+          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Tech Stack</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          {skillCategories.map(cat => (
+            <div key={cat} className="glass-card" style={{ padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {cat}
+              </h4>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {skills.filter(s => s.category === cat).map(skill => (
+                  <span key={skill.name} style={{ 
+                    padding: '0.4rem 0.8rem', 
+                    borderRadius: '8px', 
+                    background: 'rgba(255,255,255,0.05)', 
+                    border: '1px solid var(--glass-border)',
+                    fontSize: '0.9rem'
+                  }}>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Work Grid */}
+      <section style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Featured Projects</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
 
@@ -94,8 +183,8 @@ export default function PortfolioSection() {
               <div style={{ color: 'var(--primary)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
                 {project.techStack.join(' • ')}
               </div>
-              <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{project.title}</h4>
-              <p style={{ color: 'var(--secondary)', fontSize: '0.95rem', marginBottom: '2rem' }}>
+              <h4 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>{project.title}</h4>
+              <p style={{ color: 'var(--secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.5' }}>
                 {project.description}
               </p>
               <a href={project.url} target="_blank" rel="noopener" style={{ 
@@ -113,17 +202,27 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="glass-card" style={{ textAlign: 'center', background: 'linear-gradient(to right, rgba(56,189,248,0.05), transparent)' }}>
+      {/* Education & Footer */}
+      <section className="glass-card" style={{ padding: '4rem 2rem', textAlign: 'center', background: 'linear-gradient(to top, rgba(56,189,248,0.1), transparent)' }}>
+        <div style={{ marginBottom: '3rem' }}>
+          <div style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1rem' }}>Education</div>
+          <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>{education?.institution}</h3>
+          <div style={{ color: 'var(--secondary)' }}>{education?.degree} • {education?.period}</div>
+        </div>
+
+        <hr style={{ border: 'none', borderTop: '1px solid var(--glass-border)', margin: '3rem auto', maxWidth: '300px' }} />
+
         <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Let's Build Something Great</h3>
-        <p style={{ color: 'var(--secondary)', marginBottom: '2rem' }}>
-          I'm currently open to new opportunities and collaborations.
+        <p style={{ color: 'var(--secondary)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+          Currently seeking new challenges in high-throughput systems and distributed architecture.
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
           <a href={`mailto:${bio?.email}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>{bio?.email}</a>
-          <a href={`https://${bio?.linkedin}`} style={{ color: 'var(--secondary)' }}>LinkedIn</a>
+          <a href={`https://${bio?.linkedin}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
+          <a href={`https://${bio?.github}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>GitHub</a>
         </div>
       </section>
     </div>
   );
 }
+

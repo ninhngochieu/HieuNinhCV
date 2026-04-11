@@ -35,6 +35,39 @@ api.MapGet("portfolio/projects", async (IPortfolioService portfolio) =>
     await portfolio.GetProjectsAsync())
     .WithName("GetProjects");
 
+api.MapGet("portfolio/skills", async (IPortfolioService portfolio) => 
+    await portfolio.GetSkillsAsync())
+    .WithName("GetSkills");
+
+api.MapGet("portfolio/experience", async (IPortfolioService portfolio) => 
+    await portfolio.GetExperienceAsync())
+    .WithName("GetExperience");
+
+api.MapGet("portfolio/education", async (IPortfolioService portfolio) => 
+    await portfolio.GetEducationAsync())
+    .WithName("GetEducation");
+
+api.MapPost("portfolio/bio", async (BioDto bio, IPortfolioService portfolio) => 
+{
+    await portfolio.SaveBioAsync(bio);
+    return Results.Ok();
+})
+.WithName("SaveBio");
+
+api.MapPost("portfolio/projects", async (ProjectDto project, IPortfolioService portfolio) => 
+{
+    await portfolio.AddProjectAsync(project);
+    return Results.Created($"/api/portfolio/projects/{project.Id}", project);
+})
+.WithName("AddProject");
+
+api.MapDelete("portfolio/projects/{id}", async (string id, IPortfolioService portfolio) => 
+{
+    await portfolio.DeleteProjectAsync(id);
+    return Results.NoContent();
+})
+.WithName("DeleteProject");
+
 app.MapDefaultEndpoints();
 
 app.UseFileServer();
