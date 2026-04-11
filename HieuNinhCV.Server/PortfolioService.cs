@@ -22,14 +22,13 @@ public interface IPortfolioService
 public class PortfolioService(HttpClient httpClient, IConfiguration configuration) : IPortfolioService
 {
     private readonly HttpClient _httpClient = httpClient;
-    private readonly string _pbUrl = configuration["services:pocketbase:http:0"] ?? "http://localhost:8090";
+    private readonly string _pbUrl = configuration["services:pocketbase:http:0"] ?? "https://pocketbase.ninhngochieu.online";
 
     public async Task<BioDto> GetBioAsync()
     {
         try
         {
-            // Try fetch first record from 'bio' collection
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioDto>>($"{_pbUrl}/api/collections/bio/records?limit=1");
+            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioDto>>($"{_pbUrl}/api/collections/hieuninhcv_bio/records");
             return response?.Items.FirstOrDefault() ?? GetMockBio();
         }
         catch
@@ -42,7 +41,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     {
         try
         {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ProjectDto>>($"{_pbUrl}/api/collections/projects/records");
+            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ProjectDto>>($"{_pbUrl}/api/collections/hieuninhcv_projects/records");
             return response?.Items ?? GetMockProjects();
         }
         catch
@@ -55,7 +54,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     {
         try
         {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<SkillDto>>($"{_pbUrl}/api/collections/skills/records");
+            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<SkillDto>>($"{_pbUrl}/api/collections/hieuninhcv_skills/records");
             return response?.Items ?? GetMockSkills();
         }
         catch
@@ -68,7 +67,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     {
         try
         {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>($"{_pbUrl}/api/collections/experience/records");
+            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>($"{_pbUrl}/api/collections/hieuninhcv_experience/records");
             return response?.Items ?? GetMockExperience();
         }
         catch
@@ -77,12 +76,12 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         }
     }
 
-    public async Task<EducationDto> GetEducationAsync()
+    public async Task<IEnumerable<EducationDto>> GetEducationAsync()
     {
         try
         {
-             var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<EducationDto>>($"{_pbUrl}/api/collections/education/records?limit=1");
-             return response?.Items.FirstOrDefault() ?? GetMockEducation();
+             var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<EducationDto>>($"{_pbUrl}/api/collections/hieuninhcv_education/records");
+             return response?.Items ?? GetMockEducation();
         }
         catch
         {
@@ -92,27 +91,26 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
 
     public async Task SaveBioAsync(BioDto bio)
     {
-        // PocketBase update logic
-        var search = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioRecord>>($"{_pbUrl}/api/collections/bio/records?limit=1");
-        var existing = search?.Items.FirstOrDefault();
+        var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioDto>>($"{_pbUrl}/api/collections/hieuninhcv_bio/records");
+        var existing = response?.Items.FirstOrDefault();
         if (existing != null)
         {
-            await _httpClient.PatchAsJsonAsync($"{_pbUrl}/api/collections/bio/records/{existing.Id}", bio);
+            await _httpClient.PatchAsJsonAsync($"{_pbUrl}/api/collections/hieuninhcv_bio/records/{existing.Id}", bio);
         }
         else
         {
-            await _httpClient.PostAsJsonAsync($"{_pbUrl}/api/collections/bio/records", bio);
+            await _httpClient.PostAsJsonAsync($"{_pbUrl}/api/collections/hieuninhcv_bio/records", bio);
         }
     }
 
     public async Task AddProjectAsync(ProjectDto project)
     {
-        await _httpClient.PostAsJsonAsync($"{_pbUrl}/api/collections/projects/records", project);
+        await _httpClient.PostAsJsonAsync($"{_pbUrl}/api/collections/hieuninhcv_projects/records", project);
     }
 
     public async Task DeleteProjectAsync(string id)
     {
-        await _httpClient.DeleteAsync($"{_pbUrl}/api/collections/projects/records/{id}");
+        await _httpClient.DeleteAsync($"{_pbUrl}/api/collections/hieuninhcv_projects/records/{id}");
     }
 
     private record BioRecord(string Id);
