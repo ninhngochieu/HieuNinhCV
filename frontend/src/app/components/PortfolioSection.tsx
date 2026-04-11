@@ -101,33 +101,6 @@ export default function PortfolioSection() {
         
       </section>
 
-      {/* Experience Section */}
-      <section style={{ marginBottom: '8rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Experience</h3>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-          {experience.map((exp, idx) => (
-            <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div>
-                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{exp.role}</h4>
-                  <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{exp.company}</div>
-                </div>
-                <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{exp.period}</div>
-              </div>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1.2rem', color: 'var(--secondary)' }}>
-                {exp.highlights?.map((item, hi) => (
-                  <li key={hi}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Tech Stack Grid */}
       <section style={{ marginBottom: '8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
@@ -156,6 +129,33 @@ export default function PortfolioSection() {
                   </span>
                 ))}
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Experience</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          {experience.map((exp, idx) => (
+            <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div>
+                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{exp.role}</h4>
+                  <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{exp.company}</div>
+                </div>
+                <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{exp.period}</div>
+              </div>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1.2rem', color: 'var(--secondary)' }}>
+                {exp.highlights?.map((item, hi) => (
+                  <li key={hi}>{item}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
