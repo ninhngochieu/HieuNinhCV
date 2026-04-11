@@ -4,7 +4,9 @@ var server = builder.AddProject<Projects.HieuNinhCV_Server>("server")
     .WithHttpHealthCheck("/health")
     .WithExternalHttpEndpoints();
 
-var webfrontend = builder.AddViteApp("webfrontend", "../frontend")
+var webfrontend = builder.AddJavaScriptApp("webfrontend", "../frontend")
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints()
     .WithReference(server)
     .WaitFor(server);
 
