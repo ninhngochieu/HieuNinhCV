@@ -9,6 +9,7 @@
 | 2026-04-11 | Remove Hero Action Buttons | ✅ Removed Connect and GitHub buttons from top section |
 | 2026-04-11 | Shorten Bio Summary | ✅ Condensed professional summary across CV, backend and DB |
 | 2026-04-11 | Fix Seeder Duplication | ✅ Fixed upsert logic to handle URL encoding for special characters |
+| 2026-04-11 | Remove Project Showcase Links | ✅ Removed "View Showcase" links from all project cards |
 
 ## Active Projects
 - **HieuNinhCV**: Professional Portfolio

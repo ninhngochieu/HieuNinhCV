@@ -46,7 +46,7 @@ export default function PortfolioSection() {
   const [bio, setBio] = useState<Bio | null>(null);
   const [skills, setSkills] = useState<Skill[]>([]);
   const [experience, setExperience] = useState<Experience[]>([]);
-  const [education, setEducation] = useState<Education | null>(null);
+  const [education, setEducation] = useState<Education[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -186,26 +186,52 @@ export default function PortfolioSection() {
         </div>
       </section>
 
-      {/* Education & Footer */}
-      <section className="glass-card" style={{ padding: '4rem 2rem', textAlign: 'center', background: 'linear-gradient(to top, rgba(56,189,248,0.1), transparent)' }}>
-        <div style={{ marginBottom: '3rem' }}>
-          <div style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '1rem' }}>Education</div>
-          <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>{education?.institution}</h3>
-          <div style={{ color: 'var(--secondary)' }}>{education?.degree} • {education?.period}</div>
+      {/* Education Section */}
+      <section style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Education</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
-
-        <hr style={{ border: 'none', borderTop: '1px solid var(--glass-border)', margin: '3rem auto', maxWidth: '300px' }} />
-
-        <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Let's Build Something Great</h3>
-        <p style={{ color: 'var(--secondary)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
-          Currently seeking new challenges in high-throughput systems and distributed architecture.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-          <a href={`mailto:${bio?.email}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>{bio?.email}</a>
-          <a href={`https://${bio?.linkedin}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>LinkedIn</a>
-          <a href={`https://${bio?.github}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>GitHub</a>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          {education.map((edu, idx) => (
+            <div key={idx} className="glass-card" style={{ padding: '2rem', textAlign: 'center' }}>
+              <div style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.5rem', fontSize: '0.8rem' }}>
+                {edu.degree} in {edu.major}
+              </div>
+              <h4 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>{edu.institution}</h4>
+              <div style={{ color: 'var(--secondary)', fontSize: '0.9rem' }}>{edu.period}</div>
+            </div>
+          ))}
         </div>
       </section>
+
+      {/* Footer / CTA */}
+      <footer style={{ 
+        padding: '5rem 2rem', 
+        textAlign: 'center', 
+        borderTop: '1px solid var(--glass-border)',
+        background: 'rgba(255,255,255,0.02)'
+      }}>
+        <h3 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+          Let's Build Something Great
+        </h3>
+        <p style={{ color: 'var(--secondary)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
+          Currently seeking new challenges in high-throughput systems and distributed architecture.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <a href={`mailto:${bio?.email}`} className="primary-btn" style={{ padding: '0.8rem 2rem' }}>
+            Get in Touch
+          </a>
+          <div style={{ display: 'flex', gap: '1.5rem' }}>
+            <a href={`https://${bio?.linkedin}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)', hover: { color: 'var(--primary)' } as any }}>LinkedIn</a>
+            <a href={`https://${bio?.github}`} target="_blank" rel="noopener" style={{ color: 'var(--secondary)' }}>GitHub</a>
+          </div>
+        </div>
+        <div style={{ marginTop: '5rem', opacity: 0.3, fontSize: '0.8rem' }}>
+          © {new Date().getFullYear()} {bio?.name}. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
