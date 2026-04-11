@@ -21,7 +21,9 @@ const collections = [
             { name: "company", type: "text", id: "e1" },
             { name: "role", type: "text", id: "e2" },
             { name: "period", type: "text", id: "e3" },
-            { name: "description", type: "text", id: "e4" }
+            { name: "description", type: "text", id: "e4" },
+            { name: "startDate", type: "date", id: "e5" },
+            { name: "endDate", type: "date", id: "e6" }
         ]
     },
     {

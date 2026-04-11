@@ -3,7 +3,7 @@ namespace HieuNinhCV.Server;
 public record ProjectDto(string Id, string Title, string Description, string Url, string ImageUrl, string[] TechStack);
 public record BioDto(string Id, string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
 public record SkillDto(string Name, string[] Items);
-public record ExperienceDto(string Company, string Role, string Period, string[] Highlights);
+public record ExperienceDto(string Company, string Role, string Period, string[] Highlights, DateTime? StartDate = null, DateTime? EndDate = null);
 public record EducationDto(string Institution, string Degree, string Major, string Period);
 
 public interface IPortfolioService
@@ -67,17 +67,10 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     {
         try
         {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>($"{_pbUrl}/api/collections/hieuninhcv_experience/records");
-            var items = response?.Items ?? GetMockExperience();
-            // Sort by period descending: "Present" first, then by year and month
-            return items.OrderByDescending(e => {
-                if (e.Period.Contains("Present")) return "9999/99";
-                var parts = e.Period.Split('-').Select(p => p.Trim()).ToList();
-                var lastPart = parts.Last();
-                var dateParts = lastPart.Split('/');
-                if (dateParts.Length == 2) return $"{dateParts[1]}/{dateParts[0]}";
-                return lastPart;
-            });
+            // Fetch records with sort by endDate descending and then startDate descending
+            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>(
+                $"{_pbUrl}/api/collections/hieuninhcv_experience/records?sort=-endDate,-startDate");
+            return response?.Items ?? GetMockExperience();
         }
         catch
         {
@@ -140,9 +133,9 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];
     private IEnumerable<ExperienceDto> GetMockExperience() => [
-        new ("FPT Telecom", ".Net Developer", "08/2025 - Present", ["Sales and retail software systems built on microservices architecture.", "Optimized for extreme scale, handling peak traffic of 7,000+ RPS.", "Achieved high delivery progress on critical milestones."]),
-        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2025 - 07/2025", ["CRM system for water supply business with millions of records.", "Refactored architecture to improve performance by 30%."]),
-        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2025", ["Medical prescription system managing tens of millions of records.", "Optimized reporting modules for high-volume queries."])
+        new ("FPT Telecom", ".Net Developer", "08/2025 - Present", ["Sales and retail software systems built on microservices architecture.", "Optimized for extreme scale, handling peak traffic of 7,000+ RPS.", "Achieved high delivery progress on critical milestones."], new DateTime(2025, 8, 1), null),
+        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2025 - 07/2025", ["CRM system for water supply business with millions of records.", "Refactored architecture to improve performance by 30%."], new DateTime(2025, 6, 1), new DateTime(2025, 7, 31)),
+        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2025", ["Medical prescription system managing tens of millions of records.", "Optimized reporting modules for high-volume queries."], new DateTime(2021, 8, 1), new DateTime(2025, 6, 30))
     ];
     private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Bachelor", "Software Engineering", "10/2017 - 12/2021")];
 }
