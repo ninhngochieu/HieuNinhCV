@@ -34,7 +34,15 @@ Other •Strong grasp of OOP and SOLID principles with experience applying commo
 
 ## EXPERIENCE
 
-Vietnam Blockchain Corporation 06/2023 - Present
+FPT Telecom 08/2023 - Present
+
+.Net Developer
+
+- Developed and maintained high-performance sales and retail software systems using microservices architecture.
+- Optimized backend services for extreme scale, successfully handling traffic peaks of over 7,000 RPS.
+- Consistently met aggressive delivery schedules while ensuring system stability and scalability.
+
+Vietnam Blockchain Corporation 06/2023 - 07/2023
 
 .Net Developer
 
@@ -44,7 +52,7 @@ Vietnam Blockchain Corporation 06/2023 - Present
 - Refactored system architecture to improve performance by ~30%, and delivered a functional release within 6 months despite initial
     architectural limitations.
 
-TMA Solutions Aug 2021 - 06/
+TMA Solutions Aug 2021 - June 2023
 
 .Net Developer
 

@@ -131,8 +131,9 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];
     private IEnumerable<ExperienceDto> GetMockExperience() => [
-        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2023 - Present", ["CRM system for managing water supply orders...", "Refactored system architecture, improved performance by 30%."]),
-        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2023", ["Medical prescription system managing tens of millions of records...", "Designed and optimized reporting modules."])
+        new ("FPT Telecom", ".Net Developer", "08/2023 - Present", ["Sales and retail software systems built on microservices architecture.", "Optimized for extreme scale, handling peak traffic of 7,000+ RPS.", "Achieved high delivery progress on critical milestones."]),
+        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2023 - 07/2023", ["CRM system for water supply business with millions of records.", "Refactored architecture to improve performance by 30%."]),
+        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2023", ["Medical prescription system managing tens of millions of records.", "Optimized reporting modules for high-volume queries."])
     ];
     private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Bachelor", "Software Engineering", "10/2017 - 12/2021")];
 }

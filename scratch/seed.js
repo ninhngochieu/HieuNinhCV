@@ -15,12 +15,21 @@ const bio = {
 
 const experience = [
     {
+        company: "FPT Telecom",
+        role: ".Net Developer",
+        period: "08/2023 - Present",
+        highlights: [
+            "Sales and retail software systems built on microservices architecture.",
+            "Handled high load with peak traffic of over 7,000 requests per second (RPS).",
+            "Ensured high performance and consistent progress on critical delivery milestones."
+        ]
+    },
+    {
         company: "Vietnam Blockchain Corporation",
         role: ".Net Developer",
-        period: "06/2023 - Present",
+        period: "06/2023 - 07/2023",
         highlights: [
-            "CRM system for managing water supply orders for households and businesses with millions of records.",
-            "Principal developer and maintainer, responsible for core features and ongoing system enhancements.",
+            "CRM system for managing water supply business logic for millions of records.",
             "Refactored system architecture to improve performance by 30%."
         ]
     },
@@ -30,8 +39,8 @@ const experience = [
         period: "08/2021 - 06/2023",
         highlights: [
             "Medical prescription system managing tens of millions of healthcare records.",
-            "Designed and optimized reporting modules, developed smaller features.",
-            "Ensured timely delivery of assigned tasks and contributed to system stability."
+            "Designed and optimized reporting modules for high-volume queries.",
+            "Ensured system stability and contributed to core feature development."
         ]
     }
 ];
