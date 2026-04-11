@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 interface Bio {
+  id: string;
   name: string;
   title: string;
   summary: string;
@@ -14,7 +15,7 @@ interface Bio {
 
 export default function AdminPage() {
   const [bio, setBio] = useState<Bio>({
-    name: '', title: '', summary: '', email: '', github: '', linkedin: '', location: ''
+    id: '', name: '', title: '', summary: '', email: '', github: '', linkedin: '', location: ''
   });
   const [message, setMessage] = useState('');
 

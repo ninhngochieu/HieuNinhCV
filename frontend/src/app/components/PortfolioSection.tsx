@@ -12,6 +12,7 @@ interface Project {
 }
 
 interface Bio {
+  id: string;
   name: string;
   title: string;
   summary: string;
@@ -129,7 +130,7 @@ export default function PortfolioSection() {
                 <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{exp.period}</div>
               </div>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', paddingLeft: '1.2rem', color: 'var(--secondary)' }}>
-                {exp.highlights.map((item, hi) => (
+                {exp.highlights?.map((item, hi) => (
                   <li key={hi}>{item}</li>
                 ))}
               </ul>
@@ -181,7 +182,7 @@ export default function PortfolioSection() {
           {projects.map(project => (
             <div key={project.id} className="project-card" style={{ padding: '2rem' }}>
               <div style={{ color: 'var(--primary)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                {project.techStack.join(' • ')}
+                {project.techStack?.join(' • ')}
               </div>
               <h4 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>{project.title}</h4>
               <p style={{ color: 'var(--secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.5' }}>

@@ -1,7 +1,7 @@
 namespace HieuNinhCV.Server;
 
 public record ProjectDto(string Id, string Title, string Description, string Url, string ImageUrl, string[] TechStack);
-public record BioDto(string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
+public record BioDto(string Id, string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
 public record SkillDto(string Name, string Category);
 public record ExperienceDto(string Company, string Role, string Period, string[] Highlights);
 public record EducationDto(string Institution, string Degree, string Major, string Period);
@@ -12,7 +12,7 @@ public interface IPortfolioService
     Task<IEnumerable<ProjectDto>> GetProjectsAsync();
     Task<IEnumerable<SkillDto>> GetSkillsAsync();
     Task<IEnumerable<ExperienceDto>> GetExperienceAsync();
-    Task<EducationDto> GetEducationAsync();
+    Task<IEnumerable<EducationDto>> GetEducationAsync();
 
     Task SaveBioAsync(BioDto bio);
     Task AddProjectAsync(ProjectDto project);
@@ -118,9 +118,9 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     private record PocketBaseListResponse<T>(IEnumerable<T> Items, int TotalItems);
 
     // --- Mock Fallbacks ---
-    private BioDto GetMockBio() => new ("Ninh Ngoc Hieu", ".NET Developer", "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieuninh", "HCM City");
+    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieuninh", "HCM City");
     private IEnumerable<ProjectDto> GetMockProjects() => [new ("1", "Biwase CRM", "CRM system for water supply.", "https://ninhngochieu.site", "/projects/crm.png", [".NET", "React"])];
     private IEnumerable<SkillDto> GetMockSkills() => [new ("C#", "Languages"), new (".NET", "Frameworks")];
     private IEnumerable<ExperienceDto> GetMockExperience() => [new ("Vietnam Blockchain", ".NET Developer", "2023-Present", ["Refactored architecture"])];
-    private EducationDto GetMockEducation() => new ("Saigon University", "Bachelor", "Software Engineering", "2017-2021");
+    private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Bachelor", "Software Engineering", "2017-2021")];
 }
