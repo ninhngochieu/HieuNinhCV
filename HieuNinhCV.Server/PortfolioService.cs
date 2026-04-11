@@ -1,9 +1,18 @@
+using System.Text.Json.Serialization;
+
 namespace HieuNinhCV.Server;
 
 public record ProjectDto(string Id, string Title, string Description, string Url, string ImageUrl, string[] TechStack);
 public record BioDto(string Id, string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
 public record SkillDto(string Name, string[] Items);
-public record ExperienceDto(string Company, string Role, string Period, string[] Highlights, DateTime? StartDate = null, DateTime? EndDate = null);
+public record ExperienceDto(
+    string Company, 
+    string Role, 
+    string Period, 
+    string[] Highlights, 
+    [property: JsonPropertyName("startDate")] DateTime? StartDate = null, 
+    [property: JsonPropertyName("endDate")] DateTime? EndDate = null
+);
 public record EducationDto(string Institution, string Degree, string Major, string Period);
 
 public interface IPortfolioService
@@ -67,10 +76,13 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     {
         try
         {
-            // Fetch records with sort by endDate descending and then startDate descending
             var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>(
-                $"{_pbUrl}/api/collections/hieuninhcv_experience/records?sort=-endDate,-startDate");
-            return response?.Items ?? GetMockExperience();
+                $"{_pbUrl}/api/collections/hieuninhcv_experience/records");
+            var items = response?.Items ?? GetMockExperience();
+            
+            // Sort in memory: "Present" (null EndDate) at the top, then descending by date
+            return items.OrderByDescending(e => e.EndDate ?? DateTime.MaxValue)
+                        .ThenByDescending(e => e.StartDate ?? DateTime.MinValue);
         }
         catch
         {
