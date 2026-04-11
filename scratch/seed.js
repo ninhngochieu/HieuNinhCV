@@ -4,24 +4,24 @@ const adminEmail = "ninhngochieu@gmail.com";
 const adminPassword = "ErtbdF:j_U2HWy."; // Mật khẩu Admin có dấu (.)
 
 const bio = {
-    name: "Ninh Ngọc Hiếu",
+    name: "Ninh Ngoc Hieu",
     title: ".NET Developer",
-    summary: "Tôi là một lập trình viên .NET với 4 năm kinh nghiệm xây dựng các API và dịch vụ backend mạnh mẽ bằng ASP.NET Core. Tôi tự hào là một nhà phát triển có trách nhiệm, định hướng chi tiết, coi trọng mã sạch và kiến trúc dễ bảo trì.",
+    summary: "I’m a .NET Developer with 4 years of experience building robust APIs and backend services using ASP.NET Core. I take pride in being a responsible and detail-oriented developer who values clean code and maintainable architecture. I’m always eager to learn, adapt quickly to new technologies, and thrive in collaborative environments that focus on delivering quality software.",
     email: "ninhngochieu@gmail.com",
     github: "github.com/ninhngochieu",
     linkedin: "linkedin.com/in/hieu-ninh-1339b0212/",
-    location: "568 Lạc Long Quân, Phường 5, Quận 11, TP. HCM, Việt Nam"
+    location: "HCM City, Vietnam"
 };
 
 const experience = [
     {
         company: "Vietnam Blockchain Corporation",
         role: ".Net Developer",
-        period: "06/2023 - Hiện tại",
+        period: "06/2023 - Present",
         highlights: [
-            "Hệ thống CRM quản lý đơn hàng cấp nước cho hộ gia đình và doanh nghiệp với hàng triệu bản ghi.",
-            "Phát triển chính và bảo trì các tính năng cốt lõi và cải tiến hệ thống liên tục.",
-            "Tái cấu trúc kiến trúc hệ thống, cải thiện hiệu suất thêm 30%."
+            "CRM system for managing water supply orders for households and businesses with millions of records.",
+            "Principal developer and maintainer, responsible for core features and ongoing system enhancements.",
+            "Refactored system architecture to improve performance by 30%."
         ]
     },
     {
@@ -29,9 +29,9 @@ const experience = [
         role: ".Net Developer",
         period: "08/2021 - 06/2023",
         highlights: [
-            "Hệ thống kê đơn thuốc cho ngành y tế với hàng chục triệu hồ sơ bệnh án.",
-            "Thiết kế và tối ưu hóa các module báo cáo, phát triển các tính năng nhỏ.",
-            "Đảm bảo tiến độ công việc và đóng góp vào sự ổn định chung của hệ thống."
+            "Medical prescription system managing tens of millions of healthcare records.",
+            "Designed and optimized reporting modules, developed smaller features.",
+            "Ensured timely delivery of assigned tasks and contributed to system stability."
         ]
     }
 ];
@@ -46,14 +46,14 @@ const skills = [
 const projects = [
     {
         title: "Biwase CRM",
-        description: "Hệ thống CRM xây dựng trên cấu trúc legacy cho khách hàng Biwase.",
+        description: "CRM system built on legacy structure for the Biwase water company.",
         url: "https://www.ninhngochieu.site",
         imageUrl: "/projects/crm.png",
         techStack: ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]
     },
     {
         title: "Webstercare Medication Prescription",
-        description: "Hệ thống kê đơn thuốc cho khách hàng Webstercare tại Úc.",
+        description: "Medical prescription system for Webstercare Australia.",
         url: "https://www.ninhngochieu.site",
         imageUrl: "/projects/medication.png",
         techStack: ["Angular", ".NET 6", "Azure Service Bus"]
@@ -63,8 +63,8 @@ const projects = [
 const education = [
     {
         institution: "Saigon University",
-        degree: "Cử nhân",
-        major: "Kỹ thuật phần mềm",
+        degree: "Bachelor",
+        major: "Software Engineering",
         period: "10/2017 - 12/2021"
     }
 ];
