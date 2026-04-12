@@ -1,7 +1,26 @@
 using Scalar.AspNetCore;
 using HieuNinhCV.Server;
+using InfisicalConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Infisical configuration
+builder.Configuration.AddInfisical(new InfisicalConfigBuilder()
+    .SetInfisicalUrl("https://infisical.ninhngochieu.online")
+    .SetProjectId("416e01cc-9064-40fe-905b-063b541c9afa")
+    .SetEnvironment(builder.Environment.EnvironmentName.ToLower() switch
+    {
+        "development" => "dev",
+        "staging" => "staging",
+        "production" => "prod",
+        _ => "dev"
+    })
+    .SetAuth(new InfisicalAuthBuilder()
+        .SetUniversalAuth(
+            "ad397282-7221-4082-9777-186f7dad2b39",
+            "REDACTED_INFISICAL_CLIENT_SECRET")
+        .Build())
+    .Build());
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();

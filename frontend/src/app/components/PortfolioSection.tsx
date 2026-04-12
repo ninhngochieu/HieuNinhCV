@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Mail, PhoneCall } from 'lucide-react';
+import { Mail, PhoneCall, ChevronDown, Contact } from 'lucide-react';
 
 // Custom Brand Icons (Lucide removed brands in recent versions)
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -77,6 +77,16 @@ export default function PortfolioSection() {
   const [experience, setExperience] = useState<Experience[]>([]);
   const [education, setEducation] = useState<Education[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showCTA, setShowCTA] = useState(true); // Default to visible for troubleshooting
+
+  useEffect(() => {
+    // Keep logic for future use but start as visible
+    const handleScroll = () => {
+      // Logic could be added back here if needed
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -221,7 +231,7 @@ export default function PortfolioSection() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ marginBottom: '8rem' }}>
+      <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
           <h3 style={{ fontSize: '2.5rem', fontWeight: 800, background: 'linear-gradient(to right, #fff, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             Let&apos;s Connect
@@ -362,6 +372,57 @@ export default function PortfolioSection() {
           )}
         </div>
       </section>
+
+      {/* Floating CTA Button */}
+      <button 
+        onClick={() => {
+          const el = document.getElementById('contact');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        className="glass-card"
+        style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          padding: '0 1.5rem',
+          height: '56px',
+          borderRadius: '28px',
+          backgroundColor: '#38bdf8',
+          color: '#ffffff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.8rem',
+          cursor: 'pointer',
+          zIndex: 9999,
+          border: 'none',
+          boxShadow: '0 8px 25px rgba(56, 189, 248, 0.4)',
+          transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          fontSize: '1rem',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          outline: 'none'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05) translateY(-5px)';
+          e.currentTarget.style.boxShadow = '0 12px 30px rgba(56, 189, 248, 0.6)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1) translateY(0)';
+          e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
+        }}
+      >
+        <Contact size={24} />
+        <span>Contact Me</span>
+      </button>
+
+      <style jsx global>{`
+        @keyframes pulse {
+          0% { transform: scale(1); opacity: 0.3; }
+          100% { transform: scale(1.5); opacity: 0; }
+        }
+      `}</style>
 
     </div>
   );

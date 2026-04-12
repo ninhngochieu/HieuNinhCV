@@ -44,7 +44,7 @@ public interface IPortfolioService
 public class PortfolioService(HttpClient httpClient, IConfiguration configuration) : IPortfolioService
 {
     private readonly HttpClient _httpClient = httpClient;
-    private readonly string _pbUrl = configuration["services:pocketbase:http:0"] ?? "https://pocketbase.ninhngochieu.online";
+    private readonly string _pbUrl = configuration["Services:PocketBase"] ?? throw new InvalidOperationException("PocketBase URL is not configured.");
 
     public async Task<BioDto> GetBioAsync()
     {
