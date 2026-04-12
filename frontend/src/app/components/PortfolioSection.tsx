@@ -310,19 +310,24 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
           position: 'fixed',
           bottom: '2rem',
           right: '2rem',
-          width: '56px',
-          height: '56px',
-          borderRadius: '28px',
+          padding: '0 1.2rem',
+          height: '44px',
+          borderRadius: '22px',
           backgroundColor: '#38bdf8',
           color: '#ffffff',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          gap: '0.6rem',
           cursor: 'pointer',
           zIndex: 9999,
           border: 'none',
           boxShadow: '0 8px 25px rgba(56, 189, 248, 0.4)',
           transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          fontSize: '0.85rem',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
           outline: 'none'
         }}
         onMouseEnter={(e) => {
@@ -334,7 +339,8 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
           e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
         }}
       >
-        <Contact size={24} />
+        <Contact size={20} />
+        <span>Contact Me</span>
       </button>
 
       <style jsx global>{`
