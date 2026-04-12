@@ -149,15 +149,25 @@ export default function PortfolioSection() {
               <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 {skill.name}
               </h4>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', 
+                gap: '0.8rem' 
+              }}>
                 {skill.items?.map(item => (
                   <span key={item} style={{ 
-                    padding: '0.4rem 0.8rem', 
+                    padding: '0.5rem 0.7rem', 
                     borderRadius: '8px', 
-                    background: 'rgba(255,255,255,0.05)', 
+                    background: 'rgba(255,255,255,0.03)', 
                     border: '1px solid var(--glass-border)',
-                    fontSize: '0.85rem',
-                    color: 'rgba(255,255,255,0.8)'
+                    fontSize: '0.8rem',
+                    color: 'rgba(255,255,255,0.8)',
+                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '2.5rem',
+                    transition: 'var(--transition)'
                   }}>
                     {item}
                   </span>
