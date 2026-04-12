@@ -333,7 +333,6 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
           e.currentTarget.style.transform = 'scale(1) translateY(0)';
           e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
         }}
-        title="Contact Me"
       >
         <Contact size={24} />
       </button>
