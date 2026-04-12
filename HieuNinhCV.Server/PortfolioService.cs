@@ -23,8 +23,8 @@ public record ExperienceDto(
     string Role, 
     string Period, 
     string[] Highlights, 
-    [property: JsonPropertyName("startDate")] DateTime? StartDate = null, 
-    [property: JsonPropertyName("endDate")] DateTime? EndDate = null
+    [property: JsonPropertyName("startDate"), JsonConverter(typeof(NullablePocketBaseDateConverter))] DateTime? StartDate = null, 
+    [property: JsonPropertyName("endDate"), JsonConverter(typeof(NullablePocketBaseDateConverter))] DateTime? EndDate = null
 );
 public record EducationDto(string Institution, string Degree, string Major, string Period);
 
