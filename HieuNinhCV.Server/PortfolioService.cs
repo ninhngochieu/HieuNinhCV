@@ -3,7 +3,20 @@ using System.Text.Json.Serialization;
 namespace HieuNinhCV.Server;
 
 public record ProjectDto(string Id, string Title, string Description, string Url, string ImageUrl, string[] TechStack);
-public record BioDto(string Id, string Name, string Title, string Summary, string Email, string GitHub, string LinkedIn, string Location);
+public record BioDto(
+    string Id, 
+    string Name, 
+    string Title, 
+    string Summary, 
+    string Email, 
+    [property: JsonPropertyName("github")] string Github, 
+    [property: JsonPropertyName("linkedin")] string Linkedin, 
+    string Location, 
+    [property: JsonPropertyName("facebook")] string Facebook, 
+    [property: JsonPropertyName("phone")] string Phone,
+    [property: JsonPropertyName("outlook")] string Outlook,
+    [property: JsonPropertyName("cv_url")] string CvUrl
+);
 public record SkillDto(string Name, string[] Items);
 public record ExperienceDto(
     string Company, 
@@ -132,7 +145,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
     private record PocketBaseListResponse<T>(IEnumerable<T> Items, int TotalItems);
 
     // --- Mock Fallbacks ---
-    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "{YEARS_EXP}+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "HCM City, Vietnam");
+    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "{YEARS_EXP}+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "HCM City, Vietnam", "facebook.com/ninhngochieu99", "+84329151221", "ninhngochieu@outlook.com", "https://www.topcv.vn/xem-cv/AwlQAQYKBQIMC1cGVwYBDV8IUARSWgFfUwMAUwd147");
     private IEnumerable<ProjectDto> GetMockProjects() => [
         new ("1", "Biwase CRM", "CRM system built on legacy structure for the Biwase water company.", "https://www.ninhngochieu.site", "/projects/crm.png", ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]),
         new ("2", "Webstercare Medication Prescription", "Medical prescription system for Webstercare Australia.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])

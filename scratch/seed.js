@@ -10,8 +10,21 @@ const bio = {
     email: "ninhngochieu@gmail.com",
     github: "github.com/ninhngochieu",
     linkedin: "linkedin.com/in/hieu-ninh-1339b0212/",
-    location: "HCM City, Vietnam"
+    location: "HCM City, Vietnam",
+    facebook: "facebook.com/ninhngochieu99",
+    phone: "+84329151221",
+    outlook: "ninhngochieu@outlook.com",
+    cv_url: "https://www.topcv.vn/xem-cv/AwlQAQYKBQIMC1cGVwYBDV8IUARSWgFfUwMAUwd147"
 };
+
+const contactFields = [
+    { name: "github", type: "text" },
+    { name: "linkedin", type: "text" },
+    { name: "facebook", type: "text" },
+    { name: "phone", type: "text" },
+    { name: "outlook", type: "email" },
+    { name: "cv_url", type: "url" }
+];
 
 const experience = [
     {

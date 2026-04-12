@@ -171,3 +171,14 @@ button {
   background: var(--glass-highlight);
   border-color: var(--primary);
 }
+
+.contact-link {
+  transition: var(--transition);
+}
+
+.contact-link:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  background: rgba(56, 189, 248, 0.08) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}

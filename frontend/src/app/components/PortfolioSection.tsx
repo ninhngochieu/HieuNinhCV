@@ -1,6 +1,32 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Mail, PhoneCall } from 'lucide-react';
+
+// Custom Brand Icons (Lucide removed brands in recent versions)
+const GithubIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+);
+
+const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+);
+
+const FacebookIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+);
+
+const CVIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+);
+
+const OutlookIcon = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10 21V3L2 5V19L10 21Z" />
+    <path d="M10 5H22V19H10" />
+    <path d="M13 10l4 4 4-4" />
+  </svg>
+);
 
 interface Project {
   id: string;
@@ -20,6 +46,10 @@ interface Bio {
   github: string;
   linkedin: string;
   location: string;
+  facebook: string;
+  phone: string;
+  outlook: string;
+  cv_url: string;
 }
 
 interface Skill {
@@ -149,25 +179,15 @@ export default function PortfolioSection() {
               <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 {skill.name}
               </h4>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', 
-                gap: '0.8rem' 
-              }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                 {skill.items?.map(item => (
                   <span key={item} style={{ 
-                    padding: '0.5rem 0.7rem', 
+                    padding: '0.4rem 0.8rem', 
                     borderRadius: '8px', 
-                    background: 'rgba(255,255,255,0.03)', 
+                    background: 'rgba(255,255,255,0.05)', 
                     border: '1px solid var(--glass-border)',
-                    fontSize: '0.8rem',
-                    color: 'rgba(255,255,255,0.8)',
-                    textAlign: 'center',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: '2.5rem',
-                    transition: 'var(--transition)'
+                    fontSize: '0.85rem',
+                    color: 'rgba(255,255,255,0.8)'
                   }}>
                     {item}
                   </span>
@@ -197,6 +217,149 @@ export default function PortfolioSection() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
+          <h3 style={{ fontSize: '2.5rem', fontWeight: 800, background: 'linear-gradient(to right, #fff, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            Let&apos;s Connect
+          </h3>
+          <div style={{ height: '1px', flex: 1, background: 'linear-gradient(to right, var(--glass-border), transparent)' }}></div>
+        </div>
+        
+        <div style={{ 
+          display: 'flex', 
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '2rem' 
+        }}>
+          {bio?.email && (
+            <a href={`mailto:${bio.email}`} className="glass-card contact-link" title="Email" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <Mail size={32} />
+              </div>
+            </a>
+          )}
+          
+          {bio?.phone && (
+            <a href={`tel:${bio.phone}`} className="glass-card contact-link" title="Phone" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <PhoneCall size={32} />
+              </div>
+            </a>
+          )}
+
+          {bio?.github && (
+            <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="GitHub" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <GithubIcon size={32} />
+              </div>
+            </a>
+          )}
+
+          {bio?.linkedin && (
+            <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="LinkedIn" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <LinkedinIcon size={32} />
+              </div>
+            </a>
+          )}
+
+          {bio?.outlook && (
+            <a href={`mailto:${bio.outlook}`} className="glass-card contact-link" title="Outlook" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <OutlookIcon size={32} />
+              </div>
+            </a>
+          )}
+
+          {bio?.cv_url && (
+            <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Resume / CV" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <CVIcon size={32} />
+              </div>
+            </a>
+          )}
+
+          {bio?.facebook && (
+            <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Facebook" style={{ 
+              width: '80px',
+              height: '80px',
+              borderRadius: '50%',
+              display: 'flex', 
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+              transition: 'all 0.3s ease'
+            }}>
+              <div style={{ color: 'var(--primary)' }}>
+                <FacebookIcon size={32} />
+              </div>
+            </a>
+          )}
         </div>
       </section>
 
