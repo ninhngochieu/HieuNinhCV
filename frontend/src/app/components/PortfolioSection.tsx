@@ -253,131 +253,47 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
           display: 'flex', 
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '2rem' 
+          gap: '2.5rem' 
         }}>
           {bio?.email && (
-            <a href={`mailto:${bio.email}`} className="glass-card contact-link" title="Email" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <Mail size={20} />
-              </div>
+            <a href={`mailto:${bio.email}`} title="Email" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <Mail size={16} />
             </a>
           )}
           
           {bio?.phone && (
-            <a href={`tel:${bio.phone}`} className="glass-card contact-link" title="Phone" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <PhoneCall size={20} />
-              </div>
+            <a href={`tel:${bio.phone}`} title="Phone" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <PhoneCall size={16} />
             </a>
           )}
 
           {bio?.github && (
-            <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="GitHub" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <GithubIcon size={20} />
-              </div>
+            <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" title="GitHub" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <GithubIcon size={16} />
             </a>
           )}
 
           {bio?.linkedin && (
-            <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="LinkedIn" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <LinkedinIcon size={20} />
-              </div>
+            <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <LinkedinIcon size={16} />
             </a>
           )}
 
           {bio?.outlook && (
-            <a href={`mailto:${bio.outlook}`} className="glass-card contact-link" title="Outlook" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <OutlookIcon size={20} />
-              </div>
+            <a href={`mailto:${bio.outlook}`} title="Outlook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <OutlookIcon size={16} />
             </a>
           )}
 
           {bio?.cv_url && (
-            <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Resume / CV" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <CVIcon size={20} />
-              </div>
+            <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" title="Resume / CV" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <CVIcon size={16} />
             </a>
           )}
 
           {bio?.facebook && (
-            <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Facebook" style={{ 
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              display: 'flex', 
-              alignItems: 'center',
-              justifyContent: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-              transition: 'all 0.3s ease'
-            }}>
-              <div style={{ color: 'var(--primary)' }}>
-                <FacebookIcon size={20} />
-              </div>
+            <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" title="Facebook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <FacebookIcon size={16} />
             </a>
           )}
         </div>
