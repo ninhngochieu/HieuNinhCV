@@ -326,14 +326,14 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
           outline: 'none'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+          e.currentTarget.style.transform = 'scale(1.05) translateY(-5px)';
           e.currentTarget.style.boxShadow = '0 12px 30px rgba(56, 189, 248, 0.6)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'scale(1) translateY(0)';
           e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
         }}
-        aria-label="Contact Me"
+        title="Contact Me"
       >
         <Contact size={24} />
       </button>
