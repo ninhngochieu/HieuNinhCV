@@ -1,5 +1,5 @@
 services:
-  hieuninhcv.server:
+  hieuninhcv-server:
     image: ${DOCKER_REGISTRY-}hieuninhcvserver
     build:
       context: .
