@@ -1,17 +1,21 @@
 # Integrations
 
-## Internal Service Communication
-- **Aspire Service Discovery**: Used to resolve service addresses (e.g., `webfrontend` to `server`).
-- **HttpClient**: Backend (`HieuNinhCV.Server`) communicates with PocketBase via `HttpClient`.
-- **Environment Variables**: Aspire passes configurations (like `SERVER_HTTP`) to the frontend.
+## .NET Aspire
+The backbone of the application's local development lifecycle.
+- **Service Discovery**: Allows `webfrontend` to find `server` without hardcoded URLs.
+- **Orchestration**: Manages the startup and lifecycle of the frontend and backend services.
+- **Environment Management**: Passes `SERVER_HTTP` and `PORT` variables between services.
 
-## External Services
-- **PocketBase**: 
-  - Acts as the primary data store and back-office UI.
-  - Hosted at `https://pocketbase.ninhngochieu.online` (configurationFallback).
-  - Used for Bio, Projects, Skills, Experience, and Education data.
+## Next.js Proxy (Rewrites)
+Configured in `next.config.ts` to route all `/api/:path*` requests to the .NET Server.
+- Enables the use of relative paths in frontend `fetch` calls.
+- Simplifies CORS management.
 
-## Tooling & Observability
-- **OpenTelemetry**: Integrated in the backend for tracing and metrics.
-- **Scalar**: Replaces Swagger/Redoc for interactive API documentation in the backend.
-- **GitNexus**: Used for code intelligence and impact analysis.
+## PocketBase Service
+- **Status**: Integrated as a data source for the .NET Server.
+- **Data Synchronization**: A seeder mechanism (managed by the Server) syncs content from the local `CV.md` into PocketBase collections.
+- **API**: The Server communicates with PocketBase via its REST API (using `PocketBaseClient` or direct `HttpClient`).
+
+## Scalar OpenAPI
+- Integrated into the .NET Server.
+- Accessible at `/scalar/v1` (typical default) to test and document backend endpoints.

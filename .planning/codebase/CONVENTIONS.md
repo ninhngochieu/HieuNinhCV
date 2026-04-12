@@ -1,22 +1,23 @@
-# Coding Conventions
+# Conventions
 
-## General
-- **Naming**: Clarity over brevity.
-- **Indentation**: 4 spaces for .NET, 2 spaces for JS/TS.
+## Coding Standards
 
-## Backend (.NET)
-- **PascalCase** for public members and classes.
-- **_camelCase** for private fields.
-- **async/await** for all I/O bound operations.
-- **Minimal APIs** for endpoint definitions.
-- **Records** for DTOs.
+### .NET (C#)
+- **Style**: Minimal APIs for routing.
+- **Features**: Use file-scoped namespaces, primary constructors (where applicable), and modern C# 13+ features.
+- **DI**: Use `IServiceCollection` extensions to keep `Program.cs` clean.
 
-## Frontend (Next.js/TS)
-- **PascalCase** for React components.
-- **camelCase** for variables and functions.
-- **TypeScript** strictly typed.
-- **CSS Variables** for thematic consistency.
+### Frontend (TypeScript/React)
+- **Components**: Functional components with hooks (`useState`, `useEffect`).
+- **Styling**: Vanilla CSS with CSS Variables for theme tokens. Prefer glassmorphism (`backdrop-filter: blur`).
+- **Data Fetching**: Prefer async/await and standard `fetch`.
 
-## Git & Commits
-- Use GSD-style atomic commits for phase steps.
-- Prefix commits with phase/plan markers if applicable.
+## Naming Conventions
+- **C#**: PascalCase for classes, methods, and public properties. camelCase for private fields (with `_` prefix).
+- **TypeScript**: PascalCase for Components and Types. camelCase for variables and hooks.
+- **Files**: kebab-case for CSS and assets; PascalCase for React components.
+
+## Content Management
+- **Source of Truth**: All personal data should be kept in `CV.md`.
+- **Synchronization**: Use the automated seeder to push `CV.md` updates to the database.
+- **Language**: All public-facing content must be in English.

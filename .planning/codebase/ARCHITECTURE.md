@@ -1,21 +1,29 @@
 # Architecture
 
 ## System Overview
-The project is a **Full-Stack Portfolio** application managed as a **Distributed Application** using .NET Aspire.
+The HieuNinhCV project follows a **Distributed Application** architecture orchestrated by .NET Aspire, implementing a **Backend-for-Frontend (BFF)** pattern.
 
-### Components
-1. **AppHost (`HieuNinhCV.AppHost`)**: The orchestrator. It manages the lifecycle of the frontend, backend, and (optionally) infrastructure like PocketBase.
-2. **Backend (`HieuNinhCV.Server`)**: A .NET 10 Minimal API project. It acts as a Domain-Specific Gateway. It provides a clean API for the frontend and handles communication with PocketBase. It includes fallback mock data for resilience.
-3. **Frontend (`frontend`)**: A Next.js 15 application. It consumes the backend API to render the static/dynamic portfolio content. Highly visual and "Premium" design focus.
-4. **Data Store (`PocketBase`)**: An external or containerized BaaS providing Auth, DB, and File storage.
+```mermaid
+graph TD
+    User([User Browser]) --> Frontend[Next.js Frontend]
+    Frontend -- "/api/* (Rewrite)" --> Server[.NET Server]
+    Server --> PocketBase[PocketBase DB]
+    Server -- "Reads" --> CV[CV.md]
+    Aspire[Aspire AppHost] -- "Orchestrates" --> Frontend
+    Aspire -- "Orchestrates" --> Server
+```
 
-## Execution Flow
-1. User requests frontend.
-2. Frontend fetches data from the .NET Backend (`/api/portfolio/*`).
-3. .NET Backend fetches data from PocketBase or returns Mock data if PocketBase is unreachable.
-4. Data is rendered on the UI.
+## Internal Patterns
 
-## Deployment Strategy
-- Likely containerized via Docker.
-- Orchestrated locally via .NET Aspire.
-- Published with container files (`server.PublishWithContainerFiles(webfrontend, "wwwroot")`).
+### Backend-for-Frontend (BFF)
+Next.js acts as the primary entry point for the user, providing SSR and hydration. It proxies business logic and data requests to the .NET Server, which serves as the "true" backend.
+
+### Orchestration Layer
+The `AppHost` project defines the relationship between services. It ensures the backend is healthy before the frontend starts and provides a unified dashboard for logs and telemetry.
+
+### Data Synchronization (Sidecar Seeder)
+The system treats `CV.md` as the "Source of Truth" for profile data. A seeder component in the Server project parses this Markdown file and upserts the data into PocketBase on startup or via a specific trigger.
+
+### Minimalism & Performance
+- **Minimal APIs**: The backend uses ASP.NET Core Minimal APIs for low overhead.
+- **Client-Side Data Fetching**: `PortfolioSection` uses React `useEffect` to fetch data asynchronously, keeping the initial page load fast while loading dynamic sections in the background.

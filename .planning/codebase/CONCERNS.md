@@ -1,13 +1,13 @@
-# Architectural Concerns
+# Concerns
 
 ## Technical Debt
-- **PocketBase Coupling**: The backend is tightly coupled to PocketBase's API structure (`/api/collections/...`). If PocketBase changes, the backend breaks.
-- **Mock Data**: Mock data is hardcoded in `PortfolioService.cs`. This should ideally be moved to external JSON files.
-- **Hardcoded URLs**: PocketBase URL has a hardcoded production fallback in the code.
+- **Duplicated Models**: Frontend interfaces (`interface Bio`, `interface Skill`) are manually defined and not synchronized with backend DTOs. This risks runtime errors if the API schema changes.
+- **PocketBase Orchestration**: The PocketBase container is currently commented out in `AppHost.cs`, suggesting it must be managed manually. This complicates the developer onboarding experience.
 
-## Critical Risks
-- **Deployment Complexity**: Aspire publishing with JavaScript apps can be sensitive to environments.
-- **Observability**: While OpenTelemetry is present, logs are primarily console-based.
+## Performance
+- **Chatty Frontend**: `PortfolioSection` makes multiple concurrent `fetch` requests on mount. These could be aggregated into a single `/api/portfolio/all` call to reduce network overhead.
+- **Hardcoded Styles**: Many styles are hardcoded in `style` props within `PortfolioSection.tsx` instead of being managed through CSS classes in `globals.css`.
 
-## Observations
-- PocketBase instantiation in `AppHost.cs` is currently commented out. This indicates a shift towards using an external hosted instance or a pending migration to local containers.
+## Data Management
+- **Markdown Parsing**: Relying on custom parsing of `CV.md` as the source of truth is flexible but fragile. Changes in Markdown formatting could break the seeder.
+- **Manual Backups**: Currently no automated backup strategy for the `pocketbase_data` directory.

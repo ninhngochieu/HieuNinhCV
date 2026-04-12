@@ -1,25 +1,34 @@
 # Project Structure
 
-```text
-HieuNinhCV/
-├── .planning/                  # GSD Planning and Codebase Map
-├── .gitnexus/                  # GitNexus Index Data
-├── HieuNinhCV.AppHost/         # .NET Aspire Orchestrator
-│   ├── AppHost.cs              # Service orchestration logic
-│   └── ...
-├── HieuNinhCV.Server/          # .NET Backend (Minimal API)
-│   ├── Program.cs              # API Endpoints and Middleware
-│   ├── PortfolioService.cs     # Logic for interacting with PocketBase/Mocks
-│   └── ...
-├── frontend/                   # Next.js Frontend
-│   ├── src/
-│   │   ├── app/                # Next.js App Router
-│   │   │   ├── components/     # UI Components (PortfolioSection, etc.)
-│   │   │   ├── globals.css     # Global styles
-│   │   │   └── page.tsx        # Main Entry Point
-│   ├── package.json
-│   └── ...
-├── pocketbase_data/            # Local PocketBase data (bind mounted)
-├── scratch/                    # Temporary scripts and notes
-└── CV.md                       # Raw CV content for reference
-```
+## Root
+- `CV.md`: Profile content (Source of Truth).
+- `STATE.md`: Log of completed tasks and current project status.
+- `AGENTS.md / CLAUDE.md`: Agent configuration and rules.
+- `HieuNinhCV.slnx`: Visual Studio solution file listing all projects.
+
+## .planning / .agent
+- `.planning/codebase/`: Current project documentation (this folder).
+- `.planning/quick/`: Records of one-off tasks.
+- `.agent/skills/`: Custom toolsets for the GSD workflow.
+
+## HieuNinhCV.AppHost
+The entry point for the .NET Aspire application.
+- `AppHost.cs`: Defines project references and environment variables.
+
+## HieuNinhCV.Server
+The .NET 10 backend server.
+- `Program.cs`: API route definitions and service configuration.
+- `PortfolioService.cs`: Business logic for portfolio data management.
+- `Extensions.cs`: Dependency injection and helper methods.
+
+## frontend
+The Next.js 16 application.
+- `src/app/`: Next.js App Router root.
+- `src/app/components/`: Reusable React components (`PortfolioSection`, `WeatherSection`).
+- `public/`: Static assets like images and global CSS.
+
+## pocketbase_data
+Contains the `pb_data` folder for PocketBase persistence.
+
+## scratch
+Temporary folder for experimentation scripts, schema exports, and JSON drafts.
