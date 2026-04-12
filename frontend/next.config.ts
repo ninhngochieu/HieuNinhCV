@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   async rewrites() {
     const serverUrl = process.env.SERVER_HTTP || 'http://hieuninhcv-server:8080';
-    console.log('Next.js Proxying to:', serverUrl);
     return [
       {
         source: '/api/:path*',
