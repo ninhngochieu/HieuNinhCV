@@ -257,43 +257,43 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
         }}>
           {bio?.email && (
             <a href={`mailto:${bio.email}`} title="Email" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <Mail size={16} />
+              <Mail size={24} />
             </a>
           )}
           
           {bio?.phone && (
             <a href={`tel:${bio.phone}`} title="Phone" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <PhoneCall size={16} />
+              <PhoneCall size={24} />
             </a>
           )}
 
           {bio?.github && (
             <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" title="GitHub" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <GithubIcon size={16} />
+              <GithubIcon size={24} />
             </a>
           )}
 
           {bio?.linkedin && (
             <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <LinkedinIcon size={16} />
+              <LinkedinIcon size={24} />
             </a>
           )}
 
           {bio?.outlook && (
             <a href={`mailto:${bio.outlook}`} title="Outlook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <OutlookIcon size={16} />
+              <OutlookIcon size={24} />
             </a>
           )}
 
           {bio?.cv_url && (
             <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" title="Resume / CV" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <CVIcon size={16} />
+              <CVIcon size={24} />
             </a>
           )}
 
           {bio?.facebook && (
             <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" title="Facebook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <FacebookIcon size={16} />
+              <FacebookIcon size={24} />
             </a>
           )}
         </div>
