@@ -48,72 +48,37 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
 
     public async Task<BioDto> GetBioAsync()
     {
-        try
-        {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioDto>>($"{_pbUrl}/api/collections/hieuninhcv_bio/records");
-            return response?.Items.FirstOrDefault() ?? GetMockBio();
-        }
-        catch
-        {
-            return GetMockBio();
-        }
+        var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<BioDto>>($"{_pbUrl}/api/collections/hieuninhcv_bio/records");
+        return response?.Items.FirstOrDefault() ?? throw new Exception("Bio data not found in PocketBase.");
     }
 
     public async Task<IEnumerable<ProjectDto>> GetProjectsAsync()
     {
-        try
-        {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ProjectDto>>($"{_pbUrl}/api/collections/hieuninhcv_projects/records");
-            return response?.Items ?? GetMockProjects();
-        }
-        catch
-        {
-            return GetMockProjects();
-        }
+        var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ProjectDto>>($"{_pbUrl}/api/collections/hieuninhcv_projects/records");
+        return response?.Items ?? [];
     }
 
     public async Task<IEnumerable<SkillDto>> GetSkillsAsync()
     {
-        try
-        {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<SkillDto>>($"{_pbUrl}/api/collections/hieuninhcv_skills/records");
-            return response?.Items ?? GetMockSkills();
-        }
-        catch
-        {
-            return GetMockSkills();
-        }
+        var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<SkillDto>>($"{_pbUrl}/api/collections/hieuninhcv_skills/records");
+        return response?.Items ?? [];
     }
 
     public async Task<IEnumerable<ExperienceDto>> GetExperienceAsync()
     {
-        try
-        {
-            var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>(
-                $"{_pbUrl}/api/collections/hieuninhcv_experience/records");
-            var items = response?.Items ?? GetMockExperience();
-            
-            // Sort in memory: "Present" (null EndDate) at the top, then descending by date
-            return items.OrderByDescending(e => e.EndDate ?? DateTime.MaxValue)
-                        .ThenByDescending(e => e.StartDate ?? DateTime.MinValue);
-        }
-        catch
-        {
-            return GetMockExperience();
-        }
+        var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<ExperienceDto>>(
+            $"{_pbUrl}/api/collections/hieuninhcv_experience/records");
+        var items = response?.Items ?? [];
+        
+        // Sort in memory: "Present" (null EndDate) at the top, then descending by date
+        return items.OrderByDescending(e => e.EndDate ?? DateTime.MaxValue)
+                    .ThenByDescending(e => e.StartDate ?? DateTime.MinValue);
     }
 
     public async Task<IEnumerable<EducationDto>> GetEducationAsync()
     {
-        try
-        {
-             var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<EducationDto>>($"{_pbUrl}/api/collections/hieuninhcv_education/records");
-             return response?.Items ?? GetMockEducation();
-        }
-        catch
-        {
-            return GetMockEducation();
-        }
+         var response = await _httpClient.GetFromJsonAsync<PocketBaseListResponse<EducationDto>>($"{_pbUrl}/api/collections/hieuninhcv_education/records");
+         return response?.Items ?? [];
     }
 
     public async Task SaveBioAsync(BioDto bio)
@@ -140,27 +105,6 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         await _httpClient.DeleteAsync($"{_pbUrl}/api/collections/hieuninhcv_projects/records/{id}");
     }
 
-    private record BioRecord(string Id);
     // --- Helper for PocketBase Response Structure ---
     private record PocketBaseListResponse<T>(IEnumerable<T> Items, int TotalItems);
-
-    // --- Mock Fallbacks ---
-    private BioDto GetMockBio() => new ("1", "Ninh Ngoc Hieu", ".NET Developer", "{YEARS_EXP}+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.", "ninhngochieu@gmail.com", "github.com/ninhngochieu", "linkedin.com/in/hieu-ninh-1339b0212/", "HCM City, Vietnam", "facebook.com/ninhngochieu99", "+84329151221", "ninhngochieu@outlook.com", "https://www.topcv.vn/xem-cv/AwlQAQYKBQIMC1cGVwYBDV8IUARSWgFfUwMAUwd147");
-    private IEnumerable<ProjectDto> GetMockProjects() => [
-        new ("1", "Biwase CRM", "CRM system built on legacy structure for the Biwase water company.", "https://www.ninhngochieu.site", "/projects/crm.png", ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]),
-        new ("2", "Webstercare Medication Prescription", "Medical prescription system for Webstercare Australia.", "https://www.ninhngochieu.site", "/projects/medication.png", ["Angular", ".NET 6", "Azure Service Bus"])
-    ];
-    private IEnumerable<SkillDto> GetMockSkills() => [
-        new ("Languages", ["C#", "T-SQL", "TypeScript", "Javascript"]),
-        new ("Frameworks & Platforms", [".NET Framework", "Entity Framework", "Dapper"]),
-        new ("Frontend", ["React", "Angular", "TanStack", "HTML", "CSS"]),
-        new ("Databases", ["Microsoft SQL Server", "MongoDB", "Redis"]),
-        new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
-    ];
-    private IEnumerable<ExperienceDto> GetMockExperience() => [
-        new ("FPT Telecom", ".Net Developer", "08/2025 - Present", ["Sales and retail software systems built on microservices architecture.", "Engineered for high-concurrency and large-scale enterprise traffic.", "Achieved high delivery progress on critical milestones."], new DateTime(2025, 8, 1), null),
-        new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2025 - 07/2025", ["CRM system for water supply business with millions of records.", "Refactored architecture to improve performance by 30%."], new DateTime(2025, 6, 1), new DateTime(2025, 7, 31)),
-        new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2025", ["Medical prescription system managing tens of millions of records.", "Optimized reporting modules for high-volume queries."], new DateTime(2021, 8, 1), new DateTime(2025, 6, 30))
-    ];
-    private IEnumerable<EducationDto> GetMockEducation() => [new ("Saigon University", "Bachelor", "Software Engineering", "10/2017 - 12/2021")];
 }
