@@ -1,0 +1,6 @@
+services:
+  hieuninhcv.server:
+    image: ${DOCKER_REGISTRY-}hieuninhcvserver
+    build:
+      context: .
+      dockerfile: HieuNinhCV.Server/Dockerfile
