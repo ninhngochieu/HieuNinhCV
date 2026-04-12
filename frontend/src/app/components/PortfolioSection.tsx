@@ -71,13 +71,22 @@ interface Education {
   period: string;
 }
 
-export default function PortfolioSection() {
-  const [bio, setBio] = useState<Bio | null>(null);
-  const [skills, setSkills] = useState<Skill[]>([]);
-  const [experience, setExperience] = useState<Experience[]>([]);
-  const [education, setEducation] = useState<Education[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [showCTA, setShowCTA] = useState(true); // Default to visible for troubleshooting
+interface PortfolioData {
+  bio: Bio | null;
+  skills: Skill[];
+  experience: Experience[];
+  education: Education[];
+  projects: Project[];
+}
+
+export default function PortfolioSection({ initialData }: { initialData?: PortfolioData }) {
+  const [bio, setBio] = useState<Bio | null>(initialData?.bio || null);
+  const [skills, setSkills] = useState<Skill[]>(initialData?.skills || []);
+  const [experience, setExperience] = useState<Experience[]>(initialData?.experience || []);
+  const [education, setEducation] = useState<Education[]>(initialData?.education || []);
+  const [projects, setProjects] = useState<Project[]>(initialData?.projects || []);
+  const [loading, setLoading] = useState(!initialData);
+  const [showCTA, setShowCTA] = useState(true);
 
   useEffect(() => {
     // Keep logic for future use but start as visible
@@ -89,6 +98,9 @@ export default function PortfolioSection() {
   }, []);
 
   useEffect(() => {
+    if (initialData) return;
+    
+    // Fallback fetching logic only if no initial data (e.g. standalone navigation)
     const fetchData = async () => {
       try {
         const [bioRes, skillRes, expRes, eduRes] = await Promise.all([
@@ -109,7 +121,7 @@ export default function PortfolioSection() {
       }
     };
     fetchData();
-  }, []);
+  }, [initialData]);
 
   if (loading) return <div style={{ textAlign: 'center', padding: '100px', opacity: 0.5 }}>Architecting Experience...</div>;
 

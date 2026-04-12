@@ -158,7 +158,7 @@ public class PortfolioService(HttpClient httpClient, IConfiguration configuratio
         new ("Other", ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"])
     ];
     private IEnumerable<ExperienceDto> GetMockExperience() => [
-        new ("FPT Telecom", ".Net Developer", "08/2025 - Present", ["Sales and retail software systems built on microservices architecture.", "Optimized for extreme scale, handling peak traffic of 7,000+ RPS.", "Achieved high delivery progress on critical milestones."], new DateTime(2025, 8, 1), null),
+        new ("FPT Telecom", ".Net Developer", "08/2025 - Present", ["Sales and retail software systems built on microservices architecture.", "Engineered for high-concurrency and large-scale enterprise traffic.", "Achieved high delivery progress on critical milestones."], new DateTime(2025, 8, 1), null),
         new ("Vietnam Blockchain Corporation", ".Net Developer", "06/2025 - 07/2025", ["CRM system for water supply business with millions of records.", "Refactored architecture to improve performance by 30%."], new DateTime(2025, 6, 1), new DateTime(2025, 7, 31)),
         new ("TMA Solutions", ".Net Developer", "08/2021 - 06/2025", ["Medical prescription system managing tens of millions of records.", "Optimized reporting modules for high-volume queries."], new DateTime(2021, 8, 1), new DateTime(2025, 6, 30))
     ];

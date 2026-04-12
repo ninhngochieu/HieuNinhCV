@@ -35,7 +35,7 @@ const experience = [
         endDate: null,
         highlights: [
             "Sales and retail software systems built on microservices architecture.",
-            "Handled high load with peak traffic of over 7,000 requests per second (RPS).",
+            "Engineered for high-concurrency and large-scale enterprise traffic.",
             "Ensured high performance and consistent progress on critical delivery milestones."
         ]
     },
