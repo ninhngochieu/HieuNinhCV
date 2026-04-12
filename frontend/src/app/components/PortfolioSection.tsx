@@ -140,7 +140,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       {/* Hero Section */}
       <section style={{ marginBottom: '8rem', textAlign: 'center' }}>
         <h1 style={{ 
-          fontSize: '4.5rem', 
+          fontSize: '4rem', 
           fontWeight: 800, 
           marginBottom: '1rem',
           background: 'linear-gradient(to bottom, #fff 30%, #38bdf8)',
@@ -155,7 +155,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
         <div style={{ color: 'var(--secondary)', marginBottom: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', fontSize: '0.9rem' }}>
            <span>{bio?.location}</span>
         </div>
-        <p style={{ maxWidth: '700px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+        <p style={{ maxWidth: '700px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.1rem', lineHeight: '1.7' }}>
           {getDynamicSummary(bio?.summary)}
         </p>
         
@@ -164,7 +164,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       {/* Experience Section */}
       <section style={{ marginBottom: '8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Experience</h3>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Experience</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
 
@@ -173,7 +173,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
             <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div>
-                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{exp.role}</h4>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{exp.role}</h4>
                   <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{exp.company}</div>
                 </div>
                 <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{exp.period}</div>
@@ -191,7 +191,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       {/* Tech Stack Grid */}
       <section style={{ marginBottom: '8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Tech Stack</h3>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Tech Stack</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
 
@@ -224,7 +224,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       {/* Education Section */}
       <section style={{ marginBottom: '8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
-          <h3 style={{ fontSize: '2rem', fontWeight: 700 }}>Education</h3>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Education</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -232,7 +232,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
             <div key={idx} className="glass-card" style={{ padding: '2.5rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
                 <div>
-                  <h4 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{edu.institution}</h4>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{edu.institution}</h4>
                   <div style={{ color: 'var(--primary)', fontWeight: 600 }}>{edu.degree} in {edu.major}</div>
                 </div>
                 <div style={{ color: 'var(--secondary)', fontWeight: 500 }}>{edu.period}</div>
@@ -245,7 +245,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       {/* Contact Section */}
       <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
-          <h3 style={{ fontSize: '2.5rem', fontWeight: 800, background: 'linear-gradient(to right, #fff, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h3 style={{ fontSize: '2.2rem', fontWeight: 800, background: 'linear-gradient(to right, #fff, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             Let&apos;s Connect
           </h3>
           <div style={{ height: '1px', flex: 1, background: 'linear-gradient(to right, var(--glass-border), transparent)' }}></div>
