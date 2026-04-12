@@ -257,8 +257,8 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
         }}>
           {bio?.email && (
             <a href={`mailto:${bio.email}`} className="glass-card contact-link" title="Email" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -268,15 +268,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <Mail size={32} />
+                <Mail size={20} />
               </div>
             </a>
           )}
           
           {bio?.phone && (
             <a href={`tel:${bio.phone}`} className="glass-card contact-link" title="Phone" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -286,15 +286,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <PhoneCall size={32} />
+                <PhoneCall size={20} />
               </div>
             </a>
           )}
 
           {bio?.github && (
             <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="GitHub" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -304,15 +304,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <GithubIcon size={32} />
+                <GithubIcon size={20} />
               </div>
             </a>
           )}
 
           {bio?.linkedin && (
             <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="LinkedIn" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -322,15 +322,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <LinkedinIcon size={32} />
+                <LinkedinIcon size={20} />
               </div>
             </a>
           )}
 
           {bio?.outlook && (
             <a href={`mailto:${bio.outlook}`} className="glass-card contact-link" title="Outlook" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -340,15 +340,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <OutlookIcon size={32} />
+                <OutlookIcon size={20} />
               </div>
             </a>
           )}
 
           {bio?.cv_url && (
             <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Resume / CV" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -358,15 +358,15 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <CVIcon size={32} />
+                <CVIcon size={20} />
               </div>
             </a>
           )}
 
           {bio?.facebook && (
             <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" className="glass-card contact-link" title="Facebook" style={{ 
-              width: '80px',
-              height: '80px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
               display: 'flex', 
               alignItems: 'center',
@@ -376,7 +376,7 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               transition: 'all 0.3s ease'
             }}>
               <div style={{ color: 'var(--primary)' }}>
-                <FacebookIcon size={32} />
+                <FacebookIcon size={20} />
               </div>
             </a>
           )}
