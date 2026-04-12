@@ -3,10 +3,14 @@ const prefix = "hieuninhcv_";
 const adminEmail = "ninhngochieu@gmail.com";
 const adminPassword = "ErtbdF:j_U2HWy."; // Mật khẩu Admin có dấu (.)
 
+const experienceStart = new Date("2021-08-01");
+const today = new Date();
+const yearsExp = today.getFullYear() - experienceStart.getFullYear() - (today.getMonth() < experienceStart.getMonth() || (today.getMonth() === experienceStart.getMonth() && today.getDate() < experienceStart.getDate()) ? 1 : 0);
+
 const bio = {
     name: "Ninh Ngoc Hieu",
     title: ".NET Developer",
-    summary: "4+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.",
+    summary: `${yearsExp}+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.`,
     email: "ninhngochieu@gmail.com",
     github: "github.com/ninhngochieu",
     linkedin: "linkedin.com/in/hieu-ninh-1339b0212/",
