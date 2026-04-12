@@ -19,3 +19,8 @@ Configured in `next.config.ts` to route all `/api/:path*` requests to the .NET S
 ## Scalar OpenAPI
 - Integrated into the .NET Server.
 - Accessible at `/scalar/v1` (typical default) to test and document backend endpoints.
+
+## Infisical (Secrets Management)
+- **Status**: Integrated into the .NET Server.
+- **Role**: Secure storage and retrieval of environment-specific secrets (e.g., PocketBase credentials, API keys).
+- **Environment Awareness**: Automatically switches between `dev`, `staging`, and `prod` secrets based on the ASP.NET Core environment.
