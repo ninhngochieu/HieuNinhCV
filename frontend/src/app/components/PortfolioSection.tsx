@@ -244,11 +244,9 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
 
       {/* Contact Section */}
       <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '4rem' }}>
-          <h3 style={{ fontSize: '2.2rem', fontWeight: 800, background: 'linear-gradient(to right, #fff, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Let&apos;s Connect
-          </h3>
-          <div style={{ height: '1px', flex: 1, background: 'linear-gradient(to right, var(--glass-border), transparent)' }}></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Let&apos;s Connect</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
         
         <div style={{ 
