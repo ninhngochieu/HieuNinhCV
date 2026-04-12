@@ -75,6 +75,14 @@ export default function PortfolioSection() {
 
 // Skills are already organized by category (name) from the backend
 
+  const getDynamicSummary = (summary: string | undefined) => {
+    if (!summary) return '';
+    const start = new Date('2021-08-01');
+    const today = new Date();
+    const years = today.getFullYear() - start.getFullYear() - (today.getMonth() < start.getMonth() || (today.getMonth() === start.getMonth() && today.getDate() < start.getDate()) ? 1 : 0);
+    return summary.replace('{YEARS_EXP}', years.toString());
+  };
+
   return (
     <div className="portfolio-content">
       {/* Hero Section */}
@@ -96,7 +104,7 @@ export default function PortfolioSection() {
            <span>{bio?.location}</span>
         </div>
         <p style={{ maxWidth: '700px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
-          {bio?.summary}
+          {getDynamicSummary(bio?.summary)}
         </p>
         
       </section>
