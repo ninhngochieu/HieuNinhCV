@@ -1,6 +1,6 @@
 :root {
-  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-outfit: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-inter: var(--font-geist-sans);
+  --font-outfit: var(--font-geist-sans);
   
   --background-start: #0f172a;
   --background-end: #020617;
@@ -22,10 +22,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-html {
-  font-size: 14px;
 }
 
 html,
@@ -90,7 +86,7 @@ body {
 
 main {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   z-index: 1;
 }
 
@@ -157,6 +153,34 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--secondary);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--primary);
+  background: rgba(56, 189, 248, 0.08);
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.tech-chip {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
 }
 
 .project-card {

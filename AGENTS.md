@@ -1,4 +1,23 @@
 <!-- gitnexus:start -->
+# HieuNinhCV — Project Facts
+
+**Stack:** Next.js 16 (App Router) + React 19, frontend-only. No backend, no DB.
+Content served from `frontend/src/data/portfolio.json` (typed in `portfolio.ts`).
+
+**Commands (run inside `frontend/`):**
+- `npm run dev` → http://localhost:3000
+- `npm run lint` / `npm run typecheck` (`tsc --noEmit`) / `npm run build`
+- `npx tsx scripts/validate-portfolio.ts` — validates portfolio.json
+
+**Edit content:** `frontend/src/data/portfolio.json` (schema: `portfolio.ts`).
+**Edit UI:** `frontend/src/app/page.tsx`, `components/PortfolioSection.tsx`, `globals.css`.
+
+**Deploy:** build image from `frontend/Dockerfile` (standalone Next, port 3000);
+pushed to zot registry (`zot:5000/hieuninhcv`) and GHCR via CI. See README.md.
+
+**Legacy (do not build):** `HieuNinhCV.AppHost/`, `HieuNinhCV.slnx`,
+`docker-compose.dcproj` are leftover .NET/Aspire scaffolding — backend removed.
+
 # GitNexus — Code Intelligence
 
 This project is indexed by GitNexus as **HieuNinhCV** (159 symbols, 225 relationships, 0 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.

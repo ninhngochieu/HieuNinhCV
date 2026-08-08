@@ -19,7 +19,7 @@ export default async function Home() {
       <main style={{ maxWidth: '1000px' }}>
         <PortfolioSection initialData={initialData} />
 
-        <footer style={{ marginTop: '8rem', textAlign: 'center', color: 'var(--secondary)', fontSize: '0.9rem', opacity: 0.5 }}>
+        <footer style={{ marginTop: '8rem', textAlign: 'center', color: 'var(--secondary)', fontSize: '0.9rem' }}>
           <p>Designed and Developed by Hieu Ninh &copy; {new Date().getFullYear()}</p>
         </footer>
       </main>
