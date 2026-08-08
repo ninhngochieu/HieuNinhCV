@@ -54,6 +54,23 @@ if (data.bio?.cv_url !== EXPECTED.cv_url) {
   fail(`bio.cv_url must be exactly "${EXPECTED.cv_url}" (got "${data.bio?.cv_url}")`);
 }
 
+// Exact-value assertions for experience start/end dates (source of truth).
+const EXPECTED_EXP: Record<string, { start: string; end: string | null }> = {
+  'TMA Solutions': { start: '2021-11-01', end: '2023-06-30' },
+  'Vietnam Blockchain Corporation': { start: '2023-06-01', end: '2025-07-31' },
+  'FPT Telecom': { start: '2025-08-01', end: null },
+};
+for (const exp of data.experience) {
+  const want = EXPECTED_EXP[exp.company];
+  if (!want) fail(`unexpected experience company "${exp.company}" — update EXPECTED_EXP`);
+  if (exp.startDate !== want.start) {
+    fail(`experience "${exp.company}" startDate must be "${want.start}" (got "${exp.startDate}")`);
+  }
+  if (exp.endDate !== want.end) {
+    fail(`experience "${exp.company}" endDate must be ${want.end === null ? 'null (Present)' : `"${want.end}"`} (got "${exp.endDate}")`);
+  }
+}
+
 console.log('✅ portfolio.json valid —',
   `${data.skills.length} skill groups,`,
   `${data.experience.length} experiences,`,

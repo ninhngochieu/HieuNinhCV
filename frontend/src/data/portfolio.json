@@ -85,8 +85,8 @@
     {
       "company": "Vietnam Blockchain Corporation",
       "role": ".Net Developer",
-      "period": "06/2025 - 07/2025",
-      "startDate": "2025-06-01",
+      "period": "06/2023 - 07/2025",
+      "startDate": "2023-06-01",
       "endDate": "2025-07-31",
       "highlights": [
         "CRM system for managing water supply business logic for millions of records.",
@@ -96,9 +96,9 @@
     {
       "company": "TMA Solutions",
       "role": ".Net Developer",
-      "period": "08/2021 - 06/2025",
-      "startDate": "2021-08-01",
-      "endDate": "2025-06-30",
+      "period": "11/2021 - 06/2023",
+      "startDate": "2021-11-01",
+      "endDate": "2023-06-30",
       "highlights": [
         "Medical prescription system managing tens of millions of healthcare records.",
         "Designed and optimized reporting modules for high-volume queries.",
