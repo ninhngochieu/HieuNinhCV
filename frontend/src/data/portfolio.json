@@ -116,8 +116,8 @@
   ],
   "projects": [
     {
-      "title": "Biwase CRM",
-      "description": "CRM system built on legacy structure for the Biwase water company.",
+      "title": "Customer Relationship Management",
+      "description": "Customer relationship management system built on a legacy structure at Vietnam Blockchain Corporation, handling business logic for large volumes of customer records.",
       "url": "",
       "imageUrl": "",
       "techStack": [
