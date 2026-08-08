@@ -1,6 +1,9 @@
 services:
-  hieuninhcv-server:
-    image: ${DOCKER_REGISTRY-}hieuninhcvserver
+  hieuninhcv-frontend:
+    image: ${DOCKER_REGISTRY-}hieuninhcv-frontend
     build:
-      context: .
-      dockerfile: HieuNinhCV.Server/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

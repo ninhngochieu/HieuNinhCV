@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Mail, PhoneCall, ChevronDown, Contact } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, PhoneCall, Contact, ExternalLink } from 'lucide-react';
+import type { PortfolioData, Bio, Skill, Experience, Education, Project } from '../../data/portfolio';
 
 // Custom Brand Icons (Lucide removed brands in recent versions)
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
@@ -28,104 +29,13 @@ const OutlookIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  url: string;
-  imageUrl: string;
-  techStack: string[];
-}
-
-interface Bio {
-  id: string;
-  name: string;
-  title: string;
-  summary: string;
-  email: string;
-  github: string;
-  linkedin: string;
-  location: string;
-  facebook: string;
-  phone: string;
-  outlook: string;
-  cv_url: string;
-}
-
-interface Skill {
-  name: string;
-  items: string[];
-}
-
-interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  highlights: string[];
-}
-
-interface Education {
-  institution: string;
-  degree: string;
-  major: string;
-  period: string;
-}
-
-interface PortfolioData {
-  bio: Bio | null;
-  skills: Skill[];
-  experience: Experience[];
-  education: Education[];
-  projects: Project[];
-}
-
-export default function PortfolioSection({ initialData }: { initialData?: PortfolioData }) {
-  const [bio, setBio] = useState<Bio | null>(initialData?.bio || null);
-  const [skills, setSkills] = useState<Skill[]>(initialData?.skills || []);
-  const [experience, setExperience] = useState<Experience[]>(initialData?.experience || []);
-  const [education, setEducation] = useState<Education[]>(initialData?.education || []);
-  const [projects, setProjects] = useState<Project[]>(initialData?.projects || []);
-  const [loading, setLoading] = useState(!initialData);
-  const [showCTA, setShowCTA] = useState(true);
-
-  useEffect(() => {
-    // Keep logic for future use but start as visible
-    const handleScroll = () => {
-      // Logic could be added back here if needed
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (initialData) return;
-    
-    // Fallback fetching logic only if no initial data (e.g. standalone navigation)
-    const fetchData = async () => {
-      try {
-        const [bioRes, skillRes, expRes, eduRes] = await Promise.all([
-          fetch('/api/portfolio/bio'),
-          fetch('/api/portfolio/skills'),
-          fetch('/api/portfolio/experience'),
-          fetch('/api/portfolio/education')
-        ]);
-        
-        setBio(await bioRes.json());
-        setSkills(await skillRes.json());
-        setExperience(await expRes.json());
-        setEducation(await eduRes.json());
-      } catch (err) {
-        console.error('Error loading portfolio:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [initialData]);
-
-  if (loading) return <div style={{ textAlign: 'center', padding: '100px', opacity: 0.5 }}>Architecting Experience...</div>;
-
-// Skills are already organized by category (name) from the backend
+export default function PortfolioSection({ initialData }: { initialData: PortfolioData }) {
+  const bio: Bio = initialData.bio;
+  const skills: Skill[] = initialData.skills;
+  const experience: Experience[] = initialData.experience;
+  const education: Education[] = initialData.education;
+  const projects: Project[] = initialData.projects;
+  const [showCTA] = useState(true);
 
   const getDynamicSummary = (summary: string | undefined) => {
     if (!summary) return '';
@@ -135,30 +45,32 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
     return summary.replace('{YEARS_EXP}', years.toString());
   };
 
+  if (!bio) return <div style={{ textAlign: 'center', padding: '100px', opacity: 0.5 }}>No portfolio data.</div>;
+
   return (
     <div className="portfolio-content">
       {/* Hero Section */}
       <section style={{ marginBottom: '8rem', textAlign: 'center' }}>
-        <h1 style={{ 
-          fontSize: '4rem', 
-          fontWeight: 800, 
+        <h1 style={{
+          fontSize: '4rem',
+          fontWeight: 800,
           marginBottom: '1rem',
           background: 'linear-gradient(to bottom, #fff 30%, #38bdf8)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent'
         }}>
-          {bio?.name}
+          {bio.name}
         </h1>
         <h2 style={{ fontSize: '1.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 600 }}>
-          {bio?.title}
+          {bio.title}
         </h2>
         <div style={{ color: 'var(--secondary)', marginBottom: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', fontSize: '0.9rem' }}>
-           <span>{bio?.location}</span>
+           <span>{bio.location}</span>
         </div>
         <p style={{ maxWidth: '700px', margin: '0 auto', color: 'var(--secondary)', fontSize: '1.1rem', lineHeight: '1.7' }}>
-          {getDynamicSummary(bio?.summary)}
+          {getDynamicSummary(bio.summary)}
         </p>
-        
+
       </section>
 
       {/* Experience Section */}
@@ -203,10 +115,10 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
               </h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
                 {skill.items?.map(item => (
-                  <span key={item} style={{ 
-                    padding: '0.4rem 0.8rem', 
-                    borderRadius: '8px', 
-                    background: 'rgba(255,255,255,0.05)', 
+                  <span key={item} style={{
+                    padding: '0.4rem 0.8rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
                     border: '1px solid var(--glass-border)',
                     fontSize: '0.85rem',
                     color: 'rgba(255,255,255,0.8)'
@@ -242,56 +154,91 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
         </div>
       </section>
 
+      {/* Projects Section */}
+      <section style={{ marginBottom: '8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
+          <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Projects</h3>
+          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          {projects.map((project, idx) => (
+            <div key={idx} className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
+                <h4 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{project.title}</h4>
+                <a href={project.url} target="_blank" rel="noopener noreferrer" title="View project" style={{ color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+                  <ExternalLink size={16} /> Link
+                </a>
+              </div>
+              <p style={{ color: 'var(--secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>{project.description}</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
+                {project.techStack?.map(tech => (
+                  <span key={tech} style={{
+                    padding: '0.3rem 0.7rem',
+                    borderRadius: '8px',
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid var(--glass-border)',
+                    fontSize: '0.8rem',
+                    color: 'rgba(255,255,255,0.8)'
+                  }}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h3 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Let&apos;s Connect</h3>
           <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
         </div>
-        
-        <div style={{ 
-          display: 'flex', 
+
+        <div style={{
+          display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '2.5rem' 
+          gap: '2.5rem'
         }}>
-          {bio?.email && (
+          {bio.email && (
             <a href={`mailto:${bio.email}`} title="Email" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <Mail size={24} />
             </a>
           )}
-          
-          {bio?.phone && (
+
+          {bio.phone && (
             <a href={`tel:${bio.phone}`} title="Phone" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <PhoneCall size={24} />
             </a>
           )}
 
-          {bio?.github && (
+          {bio.github && (
             <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" title="GitHub" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <GithubIcon size={24} />
             </a>
           )}
 
-          {bio?.linkedin && (
+          {bio.linkedin && (
             <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <LinkedinIcon size={24} />
             </a>
           )}
 
-          {bio?.outlook && (
+          {bio.outlook && (
             <a href={`mailto:${bio.outlook}`} title="Outlook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <OutlookIcon size={24} />
             </a>
           )}
 
-          {bio?.cv_url && (
+          {bio.cv_url && (
             <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" title="Resume / CV" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <CVIcon size={24} />
             </a>
           )}
 
-          {bio?.facebook && (
+          {bio.facebook && (
             <a href={bio.facebook.startsWith('http') ? bio.facebook : `https://${bio.facebook}`} target="_blank" rel="noopener noreferrer" title="Facebook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
               <FacebookIcon size={24} />
             </a>
@@ -300,48 +247,50 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
       </section>
 
       {/* Floating CTA Button */}
-      <button 
-        onClick={() => {
-          const el = document.getElementById('contact');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }}
-        className="glass-card"
-        style={{
-          position: 'fixed',
-          bottom: '2rem',
-          right: '2rem',
-          padding: '0 1.2rem',
-          height: '44px',
-          borderRadius: '22px',
-          backgroundColor: '#38bdf8',
-          color: '#ffffff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '0.6rem',
-          cursor: 'pointer',
-          zIndex: 9999,
-          border: 'none',
-          boxShadow: '0 8px 25px rgba(56, 189, 248, 0.4)',
-          transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-          fontSize: '0.85rem',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '1px',
-          outline: 'none'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.05) translateY(-5px)';
-          e.currentTarget.style.boxShadow = '0 12px 30px rgba(56, 189, 248, 0.6)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1) translateY(0)';
-          e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
-        }}
-      >
-        <Contact size={20} />
-        <span>Contact Me</span>
-      </button>
+      {showCTA && (
+        <button
+          onClick={() => {
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="glass-card"
+          style={{
+            position: 'fixed',
+            bottom: '2rem',
+            right: '2rem',
+            padding: '0 1.2rem',
+            height: '44px',
+            borderRadius: '22px',
+            backgroundColor: '#38bdf8',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.6rem',
+            cursor: 'pointer',
+            zIndex: 9999,
+            border: 'none',
+            boxShadow: '0 8px 25px rgba(56, 189, 248, 0.4)',
+            transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+            outline: 'none'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.05) translateY(-5px)';
+            e.currentTarget.style.boxShadow = '0 12px 30px rgba(56, 189, 248, 0.6)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1) translateY(0)';
+            e.currentTarget.style.boxShadow = '0 8px 25px rgba(56, 189, 248, 0.4)';
+          }}
+        >
+          <Contact size={20} />
+          <span>Contact Me</span>
+        </button>
+      )}
 
       <style jsx global>{`
         @keyframes pulse {
@@ -353,4 +302,3 @@ export default function PortfolioSection({ initialData }: { initialData?: Portfo
     </div>
   );
 }
-

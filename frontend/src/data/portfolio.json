@@ -1,0 +1,83 @@
+{
+  "bio": {
+    "name": "Ninh Ngoc Hieu",
+    "title": ".NET Developer",
+    "summary": "{YEARS_EXP}+ years experience as a .NET Developer building robust APIs with ASP.NET Core. Dedicated to clean code, maintainable architecture, and collaborative excellence in every project.",
+    "email": "ninhngochieu@gmail.com",
+    "github": "github.com/ninhngochieu",
+    "linkedin": "linkedin.com/in/hieu-ninh-1339b0212/",
+    "location": "HCM City, Vietnam",
+    "facebook": "facebook.com/ninhngochieu99",
+    "phone": "+843****1221",
+    "outlook": "ninhngochieu@outlook.com",
+    "cv_url": "https://www.topcv.vn/xem-cv/AwlQAQYKBQIMC1cGVwYBDV8IUARSWgFfUwMAUwd147"
+  },
+  "skills": [
+    { "name": "Languages", "items": ["C#", "T-SQL", "TypeScript", "Javascript"] },
+    { "name": "Frameworks & Platforms", "items": [".NET Framework", "Entity Framework", "Dapper"] },
+    { "name": "Frontend", "items": ["React", "Angular", "TanStack", "HTML", "CSS"] },
+    { "name": "Databases", "items": ["Microsoft SQL Server", "MongoDB", "Redis"] },
+    { "name": "Other", "items": ["Git", "Azure DevOps", "Docker", "Linux", "Terraform", "Kafka"] }
+  ],
+  "experience": [
+    {
+      "company": "FPT Telecom",
+      "role": ".Net Developer",
+      "period": "08/2025 - Present",
+      "startDate": "2025-08-01",
+      "endDate": null,
+      "highlights": [
+        "Sales and retail software systems built on microservices architecture.",
+        "Engineered for high-concurrency and large-scale enterprise traffic.",
+        "Ensured high performance and consistent progress on critical delivery milestones."
+      ]
+    },
+    {
+      "company": "Vietnam Blockchain Corporation",
+      "role": ".Net Developer",
+      "period": "06/2025 - 07/2025",
+      "startDate": "2025-06-01",
+      "endDate": "2025-07-31",
+      "highlights": [
+        "CRM system for managing water supply business logic for millions of records.",
+        "Refactored system architecture to improve performance by 30%."
+      ]
+    },
+    {
+      "company": "TMA Solutions",
+      "role": ".Net Developer",
+      "period": "08/2021 - 06/2025",
+      "startDate": "2021-08-01",
+      "endDate": "2025-06-30",
+      "highlights": [
+        "Medical prescription system managing tens of millions of healthcare records.",
+        "Designed and optimized reporting modules for high-volume queries.",
+        "Ensured system stability and contributed to core feature development."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Saigon University",
+      "degree": "Bachelor",
+      "major": "Software Engineering",
+      "period": "10/2017 - 12/2021"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Biwase CRM",
+      "description": "CRM system built on legacy structure for the Biwase water company.",
+      "url": "https://www.ninhngochieu.site",
+      "imageUrl": "/projects/crm.png",
+      "techStack": ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]
+    },
+    {
+      "title": "Webstercare Medication Prescription",
+      "description": "Medical prescription system for Webstercare Australia.",
+      "url": "https://www.ninhngochieu.site",
+      "imageUrl": "/projects/medication.png",
+      "techStack": ["Angular", ".NET 6", "Azure Service Bus"]
+    }
+  ]
+}

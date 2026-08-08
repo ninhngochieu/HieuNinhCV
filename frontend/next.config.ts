@@ -2,15 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'standalone',
-  async rewrites() {
-    const serverUrl = process.env.SERVER_HTTP || 'http://hieuninhcv-server:8080';
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${serverUrl}/api/:path*`,
-      },
-    ];
-  },
+  // No backend: portfolio content is served from local structured JSON
+  // (frontend/src/data/portfolio.json). The previous /api proxy to the
+  // .NET + PocketBase backend has been removed.
 };
 
 export default nextConfig;
