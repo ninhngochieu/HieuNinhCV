@@ -72,7 +72,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '8rem', scrollMarginTop: '100px' }} aria-labelledby="exp-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="exp-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Experience</h2>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {experience.map((exp, idx) => (
@@ -98,7 +98,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '8rem' }} aria-labelledby="tech-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="tech-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Tech Stack</h2>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {skills.map(skill => (
@@ -120,7 +120,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '8rem' }} aria-labelledby="edu-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="edu-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Education</h2>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {education.map((edu, idx) => (
@@ -141,7 +141,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '8rem' }} aria-labelledby="proj-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="proj-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Projects</h2>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
           {projects.map((project, idx) => (
@@ -167,7 +167,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }} aria-labelledby="contact-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="contact-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Let&apos;s Connect</h2>
-          <div style={{ height: '1px', flex: 1, background: 'var(--glass-border)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
           {bio.email && (

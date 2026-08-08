@@ -8,7 +8,7 @@
   
   --primary: #38bdf8;
   --primary-hover: #7dd3fc;
-  --secondary: #94a3b8;
+  --secondary: #cbd5e1;
   
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
@@ -77,6 +77,13 @@ body {
   bottom: -50px;
   left: -50px;
   animation: float 15s infinite alternate-reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-1,
+  .blob-2 {
+    animation: none;
+  }
 }
 
 @keyframes float {
