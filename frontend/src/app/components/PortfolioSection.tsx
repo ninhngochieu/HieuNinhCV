@@ -1,3 +1,5 @@
+'use client';
+
 import { Mail, PhoneCall, MessageSquare, ExternalLink } from 'lucide-react';
 import type { PortfolioData, Bio, Skill, Experience, Education, Project } from '../../data/portfolio';
 import styles from '../Portfolio.module.css';
@@ -176,8 +178,16 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
         </div>
       </section>
 
-      {/* Floating CTA */}
-      <a href="#site-footer" className={styles.cta} aria-label="Scroll to contact">
+      {/* Floating CTA — scrolls to the very bottom (contact + footer). */}
+      <a
+        href="#site-footer"
+        className={styles.cta}
+        aria-label="Scroll to contact"
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+        }}
+      >
         <MessageSquare size={18} />
         <span>Contact</span>
       </a>

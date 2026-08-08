@@ -92,7 +92,7 @@
 /* Last content section before the footer: no double rule, tighter bottom gap. */
 .section:last-of-type {
   border-bottom: none;
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: 0;
 }
 
 .sectionLabel {
@@ -286,7 +286,7 @@
 
 /* ---------- Footer ---------- */
 .footer {
-  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-top: 1.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
   text-align: left;
