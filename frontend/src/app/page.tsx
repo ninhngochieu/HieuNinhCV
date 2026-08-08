@@ -17,7 +17,7 @@ export default async function Home() {
       <main className={styles.main}>
         <PortfolioSection initialData={initialData} />
 
-        <footer className={section.footer}>
+        <footer id="site-footer" className={section.footer}>
           <p>Designed and Developed by Hieu Ninh &copy; {new Date().getFullYear()}</p>
         </footer>
       </main>

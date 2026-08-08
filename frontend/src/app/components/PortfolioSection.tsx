@@ -177,7 +177,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Floating CTA */}
-      <a href="#contact-heading" className={styles.cta} aria-label="Scroll to contact">
+      <a href="#site-footer" className={styles.cta} aria-label="Scroll to contact">
         <MessageSquare size={18} />
         <span>Contact</span>
       </a>
