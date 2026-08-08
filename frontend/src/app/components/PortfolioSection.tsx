@@ -1,4 +1,4 @@
-import { Mail, PhoneCall, Contact, ExternalLink } from 'lucide-react';
+import { Mail, PhoneCall, MessageSquare, ExternalLink } from 'lucide-react';
 import type { PortfolioData, Bio, Skill, Experience, Education, Project } from '../../data/portfolio';
 
 // Custom Brand Icons (Lucide removed brands in recent versions)
@@ -46,7 +46,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
   return (
     <div className="portfolio-content">
       {/* Hero Section */}
-      <section style={{ marginBottom: '5rem', textAlign: 'center' }}>
+      <section style={{ marginBottom: '3rem', textAlign: 'center' }}>
         <h1 style={{
           fontSize: 'clamp(2.25rem, 8vw, 4rem)',
           fontWeight: 800,
@@ -72,7 +72,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '5rem', scrollMarginTop: '100px' }} aria-labelledby="exp-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="exp-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Experience</h2>
-          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 55%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {experience.map((exp, idx) => (
@@ -98,7 +98,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '5rem' }} aria-labelledby="tech-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="tech-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Tech Stack</h2>
-          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 55%, transparent)' }}></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           {skills.map(skill => (
@@ -120,7 +120,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '5rem' }} aria-labelledby="edu-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="edu-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Education</h2>
-          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 55%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {education.map((edu, idx) => (
@@ -141,7 +141,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section style={{ marginBottom: '5rem' }} aria-labelledby="proj-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="proj-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Projects</h2>
-          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 55%, transparent)' }}></div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
           {projects.map((project, idx) => (
@@ -169,7 +169,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       <section id="contact" style={{ marginBottom: '5rem', scrollMarginTop: '100px' }} aria-labelledby="contact-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="contact-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Let&apos;s Connect</h2>
-          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
+          <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 55%, transparent)' }}></div>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
           {bio.email && (
@@ -223,7 +223,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
           letterSpacing: '1px'
         }}
       >
-        <Contact size={20} />
+        <MessageSquare size={20} />
         <span>Contact Me</span>
       </a>
     </div>
