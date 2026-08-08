@@ -42,6 +42,18 @@ if (!data.bio?.name || !data.bio?.email) fail('bio.name and bio.email are requir
 if (!data.experience.length) fail('experience must not be empty');
 if (!data.skills.length) fail('skills must not be empty');
 
+// Exact-value assertions for source-of-truth contact fields.
+const EXPECTED = {
+  phone: '+84329151221',
+  cv_url: 'https://www.topcv.vn/xem-cv/AwlQAQYKBQIMC1cGVwYBDV8IUARSWgFfUwMAUwd147',
+};
+if (data.bio?.phone !== EXPECTED.phone) {
+  fail(`bio.phone must be exactly "${EXPECTED.phone}" (got "${data.bio?.phone}")`);
+}
+if (data.bio?.cv_url !== EXPECTED.cv_url) {
+  fail(`bio.cv_url must be exactly "${EXPECTED.cv_url}" (got "${data.bio?.cv_url}")`);
+}
+
 console.log('✅ portfolio.json valid —',
   `${data.skills.length} skill groups,`,
   `${data.experience.length} experiences,`,
