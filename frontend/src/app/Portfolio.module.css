@@ -1,0 +1,303 @@
+/* ============================================================
+   Hieu Ninh CV — Editorial / Swiss design system
+   Typographic POV, asymmetric grid, single amber accent.
+   ============================================================ */
+
+.page {
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle, non-distracting ambient glow — not the centered blob cliche */
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(60vw 60vw at 85% -10%, rgba(245, 158, 11, 0.10), transparent 60%),
+    radial-gradient(50vw 50vw at -10% 110%, rgba(56, 189, 248, 0.08), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ---------- Hero (asymmetric) ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.heroName {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3rem, 11vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--fg);
+}
+
+.heroName em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.heroTitle {
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0 0 0.4rem;
+}
+
+.heroSummary {
+  max-width: 46ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--secondary);
+  margin: 0;
+}
+
+/* ---------- Section (editorial two-column) ---------- */
+.section {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sectionLabel {
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--secondary);
+  padding-top: 0.4rem;
+}
+
+.sectionBody {
+  min-width: 0;
+}
+
+/* ---------- Experience / Education cards ---------- */
+.entry {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+}
+.entry:first-child { border-top: none; padding-top: 0; }
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.entryRole {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--fg);
+}
+
+.entryCompany {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.entryPeriod {
+  font-family: var(--font-geist-mono);
+  font-size: 0.8rem;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.entryList {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ---------- Tech stack ---------- */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.skillGroup {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.skillName {
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  font-size: 0.82rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--secondary);
+}
+
+/* ---------- Projects ---------- */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.projectCard {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.projectCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--fg);
+}
+
+.projectDesc {
+  color: var(--secondary);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ---------- Contact ---------- */
+.contactRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--secondary);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.contactLink:hover {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.contactLink:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Floating CTA ---------- */
+.cta {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 46px;
+  padding: 0 1.3rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+  transition: transform 0.2s ease;
+}
+.cta:hover { transform: translateY(-2px); }
+.cta:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  text-align: left;
+  font-family: var(--font-geist-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--secondary);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .section { grid-template-columns: 1fr; gap: 1rem; }
+  .sectionLabel { padding-top: 0; }
+  .heroMeta { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta, .projectCard, .contactLink { transition: none; }
+  .cta:hover, .projectCard:hover { transform: none; }
+}
