@@ -1,17 +1,21 @@
 # Project State
 
-## Quick Tasks Completed
+## Architecture
+Frontend-only Next.js portfolio. Content lives in `frontend/src/data/portfolio.json`
+(typed via `frontend/src/data/portfolio.ts`), seeded from the original PocketBase
+records and read at build/SSR time. **No backend, no database, no runtime API calls.**
+
+## Recent Changes
 | Date | Task | Outcome |
 |------|------|---------|
-| 2026-04-11 | Build Portfolio Showcase | Success: Next.js + ASP.NET + Scalar + PocketBase |
-| 2026-04-11 | Fix PortfolioSection TypeError (map of null) | ✅ Fixed with optional chaining |
-| 2026-04-11 | Synchronize Data with CV.md (English) | ✅ Translated all content to English, ran upsert seeder |
-| 2026-04-11 | Remove Hero Action Buttons | ✅ Removed Connect and GitHub buttons from top section |
-| 2026-04-11 | Shorten Bio Summary | ✅ Condensed professional summary across CV, backend and DB |
-| 2026-04-11 | Fix Seeder Duplication | ✅ Fixed upsert logic to handle URL encoding for special characters |
-| 2026-04-11 | Remove Project Showcase Links | ✅ Removed "View Showcase" links from all project cards |
-| 2026-04-11 | Fix Education & Redesign Footer | ✅ Fixed education data loading and separated it from footer |
-| 2026-04-11 | Remove Featured Projects | ✅ Removed Featured Projects section as requested |
+| 2026-08-08 | Pivot to frontend-only | ✅ Removed .NET Server + PocketBase; data served from local JSON |
+| 2026-08-08 | Sync data from live PocketBase | ✅ portfolio.json matches PB (6 skill groups, 3 experience, 2 projects) |
+| 2026-08-08 | Autoplan review + fixes | ✅ layout metadata, compose image, stale docs cleaned |
 
 ## Active Projects
-- **HieuNinhCV**: Professional Portfolio
+- **HieuNinhCV**: Frontend-only portfolio (Next.js standalone, deployed as `hieuninhcv` image on zot registry).
+
+## Known / Deferred
+- `HieuNinhCV.AppHost` + `HieuNinhCV.slnx` retained but the Server reference is
+  commented out (Server project removed). Aspire solution is not buildable as-is.
+- PocketBase admin password should be rotated on the live instance (out of repo scope).

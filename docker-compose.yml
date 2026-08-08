@@ -1,6 +1,6 @@
 services:
   hieuninhcv-frontend:
-    image: ${DOCKER_REGISTRY-}hieuninhcv-frontend
+    image: ${DOCKER_REGISTRY-}hieuninhcv
     build:
       context: ./frontend
       dockerfile: Dockerfile

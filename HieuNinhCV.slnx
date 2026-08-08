@@ -7,5 +7,7 @@
     <Deploy />
   </Project>
   <Project Path="HieuNinhCV.AppHost/HieuNinhCV.AppHost.csproj" />
-  <Project Path="HieuNinhCV.Server/HieuNinhCV.Server.csproj" />
+  <!-- HieuNinhCV.Server removed on 2026-08-08 (frontend-only pivot).
+       AppHost Server reference is commented out in AppHost.cs. -->
+  <!-- <Project Path="HieuNinhCV.Server/HieuNinhCV.Server.csproj" /> -->
 </Solution>
