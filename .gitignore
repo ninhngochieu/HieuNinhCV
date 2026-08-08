@@ -362,3 +362,16 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 .gitnexus
+
+# --- PocketBase local data ---
+# Never commit live databases (may contain PII + password hashes).
+pocketbase_data/*.db
+
+# --- Dev tooling / local config (not part of the portfolio product) ---
+.agent/
+.planning/
+.claude/
+
+# --- Secrets ---
+.env
+*.user-secrets

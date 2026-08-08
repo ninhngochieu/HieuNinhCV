@@ -4,7 +4,13 @@ using InfisicalConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add Infisical configuration
+// Add Infisical configuration.
+// The Universal Auth client secret is loaded from configuration (env var
+// INFISICAL__CLIENTSECRET in prod/CI, or `dotnet user-secrets set "Infisical:ClientSecret" ...` locally).
+// It MUST NOT be hardcoded — the previous value was leaked and rotated.
+var infisicalClientSecret = builder.Configuration["Infisical:ClientSecret"]
+    ?? throw new InvalidOperationException("Infisical:ClientSecret is not configured.");
+
 builder.Configuration.AddInfisical(new InfisicalConfigBuilder()
     .SetInfisicalUrl("https://infisical.ninhngochieu.online")
     .SetProjectId("416e01cc-9064-40fe-905b-063b541c9afa")
@@ -17,8 +23,8 @@ builder.Configuration.AddInfisical(new InfisicalConfigBuilder()
     })
     .SetAuth(new InfisicalAuthBuilder()
         .SetUniversalAuth(
-            "ad397282-7221-4082-9777-186f7dad2b39",
-            "REDACTED_INFISICAL_CLIENT_SECRET")
+            "ad397282-7221-4082-9777-186f7dad2b39", // client ID (identifier, not secret)
+            infisicalClientSecret)
         .Build())
     .Build());
 
