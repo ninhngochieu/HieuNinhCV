@@ -118,7 +118,7 @@
     {
       "title": "Biwase CRM",
       "description": "CRM system built on legacy structure for the Biwase water company.",
-      "url": "https://www.ninhngochieu.site",
+      "url": "",
       "imageUrl": "",
       "techStack": [
         "ReactJS",
@@ -130,7 +130,7 @@
     {
       "title": "Webstercare Medication Prescription",
       "description": "Medical prescription system for Webstercare Australia.",
-      "url": "https://www.ninhngochieu.site",
+      "url": "",
       "imageUrl": "",
       "techStack": [
         "Angular",

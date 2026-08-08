@@ -46,7 +46,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
   return (
     <div className="portfolio-content">
       {/* Hero Section */}
-      <section style={{ marginBottom: '8rem', textAlign: 'center' }}>
+      <section style={{ marginBottom: '5rem', textAlign: 'center' }}>
         <h1 style={{
           fontSize: 'clamp(2.25rem, 8vw, 4rem)',
           fontWeight: 800,
@@ -69,7 +69,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Experience Section */}
-      <section style={{ marginBottom: '8rem', scrollMarginTop: '100px' }} aria-labelledby="exp-heading">
+      <section style={{ marginBottom: '5rem', scrollMarginTop: '100px' }} aria-labelledby="exp-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="exp-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Experience</h2>
           <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
@@ -95,7 +95,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Tech Stack Grid */}
-      <section style={{ marginBottom: '8rem' }} aria-labelledby="tech-heading">
+      <section style={{ marginBottom: '5rem' }} aria-labelledby="tech-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="tech-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Tech Stack</h2>
           <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
@@ -117,7 +117,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Education Section */}
-      <section style={{ marginBottom: '8rem' }} aria-labelledby="edu-heading">
+      <section style={{ marginBottom: '5rem' }} aria-labelledby="edu-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="edu-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Education</h2>
           <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
@@ -138,7 +138,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Projects Section */}
-      <section style={{ marginBottom: '8rem' }} aria-labelledby="proj-heading">
+      <section style={{ marginBottom: '5rem' }} aria-labelledby="proj-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="proj-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Projects</h2>
           <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
@@ -148,9 +148,11 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
             <div key={idx} className="project-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{project.title}</h3>
-                <a href={project.url} target="_blank" rel="noopener noreferrer" title="View project" style={{ color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
-                  <ExternalLink size={16} /> Link
-                </a>
+                {project.url && (
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" title="View project" style={{ color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+                    <ExternalLink size={16} /> Link
+                  </a>
+                )}
               </div>
               <p style={{ color: 'var(--secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>{project.description}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
@@ -164,7 +166,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ marginBottom: '8rem', scrollMarginTop: '100px' }} aria-labelledby="contact-heading">
+      <section id="contact" style={{ marginBottom: '5rem', scrollMarginTop: '100px' }} aria-labelledby="contact-heading">
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3rem' }}>
           <h2 id="contact-heading" style={{ fontSize: '1.75rem', fontWeight: 700 }}>Let&apos;s Connect</h2>
           <div style={{ height: '1px', flex: 1, background: 'color-mix(in srgb, var(--secondary) 35%, transparent)' }}></div>
