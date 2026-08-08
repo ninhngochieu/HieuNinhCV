@@ -1,6 +1,6 @@
 // Single source of truth for all portfolio content.
-// Replaces the old PocketBase + .NET backend: data now lives in portfolio.json
-// (seeded from PocketBase) and is read at build/SSR time. No runtime API calls.
+// Content lives in portfolio.json (seeded from the original PocketBase records)
+// and is read at build/SSR time. No runtime API calls.
 
 export interface Bio {
   name: string;
