@@ -301,6 +301,9 @@
   .section { grid-template-columns: 1fr; gap: 1rem; }
   .sectionLabel { padding-top: 0; }
   .heroMeta { flex-direction: column; align-items: flex-start; }
+  /* Tighten the tail on mobile: less dead space before the footer. */
+  .section:last-of-type { padding-bottom: 1.5rem; }
+  .footer { margin-top: 1.5rem; padding-top: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

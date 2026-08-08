@@ -3,6 +3,12 @@
   padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem);
 }
 
+@media (max-width: 720px) {
+  .page {
+    padding-bottom: 2.5rem;
+  }
+}
+
 .main {
   max-width: 1080px;
   margin: 0 auto;
