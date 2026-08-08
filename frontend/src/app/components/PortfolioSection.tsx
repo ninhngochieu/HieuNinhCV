@@ -203,38 +203,38 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
           gap: '2.5rem'
         }}>
           {bio.email && (
-            <a href={`mailto:${bio.email}`} title="Email" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <Mail size={24} />
+            <a href={`mailto:${bio.email}`} title="Email" aria-label="Email" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <Mail size={24} aria-hidden />
             </a>
           )}
 
           {bio.phone && (
-            <a href={`tel:${bio.phone}`} title="Phone" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <PhoneCall size={24} />
+            <a href={`tel:${bio.phone}`} title="Phone" aria-label="Phone" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <PhoneCall size={24} aria-hidden />
             </a>
           )}
 
           {bio.github && (
-            <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" title="GitHub" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <GithubIcon size={24} />
+            <a href={bio.github.startsWith('http') ? bio.github : `https://${bio.github}`} target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <GithubIcon size={24} aria-hidden />
             </a>
           )}
 
           {bio.linkedin && (
-            <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <LinkedinIcon size={24} />
+            <a href={bio.linkedin.startsWith('http') ? bio.linkedin : `https://${bio.linkedin}`} target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <LinkedinIcon size={24} aria-hidden />
             </a>
           )}
 
           {bio.outlook && (
-            <a href={`mailto:${bio.outlook}`} title="Outlook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <OutlookIcon size={24} />
+            <a href={`mailto:${bio.outlook}`} title="Outlook" aria-label="Outlook" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <OutlookIcon size={24} aria-hidden />
             </a>
           )}
 
           {bio.cv_url && (
-            <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" title="Resume / CV" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
-              <CVIcon size={24} />
+            <a href={bio.cv_url} target="_blank" rel="noopener noreferrer" title="Resume / CV" aria-label="Resume / CV" style={{ color: 'var(--secondary)', transition: 'var(--transition)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}>
+              <CVIcon size={24} aria-hidden />
             </a>
           )}
 

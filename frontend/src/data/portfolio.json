@@ -70,14 +70,14 @@
       "title": "Biwase CRM",
       "description": "CRM system built on legacy structure for the Biwase water company.",
       "url": "https://www.ninhngochieu.site",
-      "imageUrl": "/projects/crm.png",
+      "imageUrl": "",
       "techStack": ["ReactJS", ".NET 6", "SQL Server", "MongoDB"]
     },
     {
       "title": "Webstercare Medication Prescription",
       "description": "Medical prescription system for Webstercare Australia.",
       "url": "https://www.ninhngochieu.site",
-      "imageUrl": "/projects/medication.png",
+      "imageUrl": "",
       "techStack": ["Angular", ".NET 6", "Azure Service Bus"]
     }
   ]
