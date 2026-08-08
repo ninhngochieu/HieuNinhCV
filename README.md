@@ -36,7 +36,8 @@ docker run -p 3000:3000 <registry>/hieuninhcv:latest
 # hoặc: docker compose up --build   (port 3000)
 ```
 
-Image được push lên zot registry (`zot:5000/hieuninhcv`) và GHCR qua CI.
+Static export (`output: 'export'`) — nginx serve thư mục `out/` trên port 3000,
+không cần Node runtime.
 
 ## Trạng thái
 

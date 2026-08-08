@@ -16,6 +16,5 @@ records and read at build/SSR time. **No backend, no database, no runtime API ca
 - **HieuNinhCV**: Frontend-only portfolio (Next.js standalone, deployed as `hieuninhcv` image on zot registry).
 
 ## Known / Deferred
-- `HieuNinhCV.AppHost` + `HieuNinhCV.slnx` retained but the Server reference is
-  commented out (Server project removed). Aspire solution is not buildable as-is.
+- `HieuNinhCV.AppHost` + `HieuNinhCV.slnx` removed (frontend-only pivot complete — no .NET/Aspire remains).
 - PocketBase admin password should be rotated on the live instance (out of repo scope).
