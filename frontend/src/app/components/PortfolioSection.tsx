@@ -35,7 +35,7 @@ export default function PortfolioSection({ initialData }: { initialData: Portfol
   const projects: Project[] = initialData.projects;
 
   // Years of experience computed server-side to avoid hydration mismatch.
-  const start = new Date('2021-08-01');
+  const start = new Date('2021-11-01');
   const today = new Date();
   const years =
     today.getFullYear() - start.getFullYear() -
